@@ -55,6 +55,10 @@ export default {
                             <div class="type-title-sm">Lygio ID</div>
                             <p>{{ level.id }}</p>
                         </li>
+                         <li>
+                            <div class="type-title-sm">Enjoyment</div>
+                            <p class="enjoyment" :src="video"></p>
+                        </li>
                     </ul>
                     <div class="nong" v-if="level.NONG != undefined">
                         <a :href="level.NONG">
@@ -170,6 +174,18 @@ export default {
                     : this.level.verification
             );
         },
+        enjoyment(){
+            ratingSum = 0;
+            ratingCount = 0;
+            this.list[this.selected][0].map((record) => {
+                if(record.enjoyment != null && record.enjoyment >= 0){
+                    ratingSum = ratingSum + record.enjoyment;
+                    ratingCount++;
+
+                }
+            }) 
+           return ratingSum/ratingCount;
+        }
     },
     async mounted() {
         // Hide loading spinner
