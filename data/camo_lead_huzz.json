@@ -21,6 +21,10 @@
         {
             "user": "taiga",
             "enjoyment": null
+        },
+        {
+            "user": "danz",
+            "enjoyment": 4
         }
     ]
 }
