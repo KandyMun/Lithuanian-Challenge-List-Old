@@ -18,7 +18,12 @@
         {
             "user": "ta1p",
             "enjoyment": 0.1
+        },
+        {
+            "user": "Algirdas42",
+            "enjoyment": 4.5
         }
+        
         
     ]
 }
