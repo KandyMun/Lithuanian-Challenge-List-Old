@@ -38,6 +38,10 @@
         {
             "user": "hextorus",
             "enjoyment": 5
+        },
+        {
+            "user": "taiga",
+            "enjoyment": 7.5
         }
     ]
 }
