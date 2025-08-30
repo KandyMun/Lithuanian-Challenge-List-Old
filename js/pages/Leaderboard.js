@@ -65,9 +65,12 @@ export default {
                             <div class="extra" style="width:25%">
                                 <h2 style="padding:5px; width:100%">Taškai</h2>
                                 <div class="levels">
-                                    <div class="level-display" style="font-size:1.4em;">{{ entry.total }}</div>
+                                    <div class="level-display" style="font-size:1.4em;">{{ entry.total}}</div>
+                                    <div class="level-display" style="font-size:0.9em; opacity:0.7;"> ({{ entry.packsComplete.length * 20 }} taškų iš pakelių)
+                                        </div>
                                 </div>
                             </div>
+                            
 
                             <!--Hardest-->
                             <div class="extra" style="width:25%">
@@ -83,10 +86,11 @@ export default {
                                             </template>
                                         </div>
                                     </div>
+                                    
                                 </template>
                                 <template v-else>
                                     <div class="levels">
-                                        <div class="level-display" style="font-size:1.4em;"Nieko</div>
+                                        <div class="level-display" style="font-size:1.4em;"> Nieko</div>
                                     </div>
                                 </template>
                             </div>
