@@ -17,7 +17,11 @@
         },
         {
             "user": "Algirdas42",
-            "enjoyment": null
+            "enjoyment": 9.5
+        },
+        {
+            "user": "ZonerG",
+            "enjoyment": 8
         }
     ]
 }

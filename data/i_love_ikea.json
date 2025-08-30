@@ -17,7 +17,7 @@
         },
         {
             "user": "KandyMan",
-            "enjoyment": null
+            "enjoyment": 7
         },
         {
             "user": "xtrapnationx",
@@ -50,6 +50,10 @@
         {
             "user": "S3N1",
             "enjoyment": 6
+        },
+        {
+            "user": "ZonerG",
+            "enjoyment": 9
         }
         
     ]

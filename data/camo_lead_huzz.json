@@ -1,0 +1,42 @@
+{
+    "id": 120919813,
+    "name": "camo lead huzz",
+    "author": "Slick",
+    "creators": ["Slick","taiga"],
+    "verifier": "Slick",
+    "verification": "https://www.youtube.com/watch?v=ESfGv7SQp58",
+    "records": [
+        {
+            "user": "S3N1",
+            "enjoyment": 3
+        },
+        {
+            "user": "hextorus",
+            "enjoyment": 8
+        },
+        {
+            "user": "ZonerG",
+            "enjoyment": 8
+        },
+        {
+            "user": "taiga",
+            "enjoyment": null
+        },
+        {
+            "user": "danz",
+            "enjoyment": 3
+        },
+        {
+            "user": "KandyMan",
+            "enjoyment": 7
+        },
+        {
+            "user": "Algirdas42",
+            "enjoyment": 7
+        },
+        {
+            "user": "ta1p",
+            "enjoyment": 8
+        }
+    ]
+}

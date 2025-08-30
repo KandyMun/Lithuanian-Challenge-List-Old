@@ -10,7 +10,7 @@
 
         {
             "user": "KandyMan",
-            "enjoyment": null
+            "enjoyment": 6
         },
         {
             "user": "S3N1",
@@ -23,6 +23,10 @@
         {
             "user": "xtrapnationx",
             "enjoyment": 7.5
+        },
+        {
+            "user": "taiga",
+            "enjoyment": 6
         }
         
     ]

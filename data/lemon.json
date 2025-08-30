@@ -24,7 +24,7 @@
         },
         {
             "user": "KandyMan",
-            "enjoyment": null
+            "enjoyment": 7.6
         },
         {
             "user": "S3N1",
@@ -38,6 +38,10 @@
         {
             "user": "hextorus",
             "enjoyment": 5
+        },
+        {
+            "user": "taiga",
+            "enjoyment": 7.5
         }
     ]
 }

@@ -1,0 +1,22 @@
+{
+    "id": 111791366,
+    "name": "Redemption",
+    "author": "Griance",
+    "creators": ["Griance"],
+    "verifier": "Griance",
+    "verification": "https://www.youtube.com/watch?v=y85IlIBS4y0",
+    "records": [
+        {
+            "user": "ta1p",
+            "enjoyment": 7
+        },
+        {
+            "user": "hextorus",
+            "enjoyment": 8
+        },
+        {
+            "user": "S3N1",
+            "enjoyment": 3
+        }
+    ]
+}

@@ -16,7 +16,15 @@
         {
             "user": "ZygisDij",
             "link": "https://www.youtube.com/watch?v=BRVJje0ka5o",
-            "enjoyment": null
+            "enjoyment": 5
+        },
+        {
+            "user": "ZonerG",
+            "enjoyment": 9
+        },
+        {
+            "user": "Algirdas42",
+            "enjoyment": 9
         }
 
     ]

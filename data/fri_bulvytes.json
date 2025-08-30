@@ -1,0 +1,19 @@
+{
+    "id": 111053195,
+    "name": "FRI BULVYTES",
+    "author": "S3N1",
+    "creators": ["S3N1","TopHatMark"],
+    "verifier": "S3N1",
+    "verification": "https://youtu.be/GfpqUG7VPvw",
+    "NONG": "data/NONGS/1230880.mp3",
+    "records": [
+        {
+            "user": "hextorus",
+            "enjoyment": 8.5
+        },
+        {
+            "user": "Algirdas42",
+            "enjoyment": 8
+        }
+    ]
+}

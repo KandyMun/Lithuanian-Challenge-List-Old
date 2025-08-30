@@ -20,7 +20,7 @@
         },
         {
           "user": "KandyMan",
-          "enjoyment": null
+          "enjoyment": 7
         },
         {
           "user": "ta1p",
@@ -33,6 +33,10 @@
         {
             "user": "ZonerG",
             "enjoyment": 5
+        },
+        {
+            "user": "S3N1",
+            "enjoyment": 7
         }
     ]
 }

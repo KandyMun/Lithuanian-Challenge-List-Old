@@ -10,7 +10,7 @@
 
         {
             "user": "KandyMan",
-            "enjoyment": null
+            "enjoyment": 6
         },
         {
             "user": "Algirdas42",
@@ -22,6 +22,10 @@
         },
         {
             "user": "Slick",
+            "enjoyment": 7
+        },
+        {
+            "user": "ZonerG",
             "enjoyment": 7
         }
 

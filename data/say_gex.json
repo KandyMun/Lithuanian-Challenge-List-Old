@@ -21,7 +21,7 @@
         },
         {
             "user": "KandyMan",
-            "enjoyment": null
+            "enjoyment": 3
         },
         {
             "user": "ta1p",
@@ -38,6 +38,14 @@
         {
             "user": "Velniukstis",
             "enjoyment": 4
+        },
+        {
+            "user": "S3N1",
+            "enjoyment": 4
+        },
+        {
+          "user": "NojusGaminGG",
+          "enjoyment": 7
         }
         
     ]
