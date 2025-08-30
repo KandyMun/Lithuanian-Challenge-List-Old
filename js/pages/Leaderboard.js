@@ -65,7 +65,7 @@ export default {
                             <div class="extra" style="width:25%">
                                 <h2 style="padding:5px; width:100%">Taškai</h2>
                                 <div class="levels">
-                                    <div class="level-display" style="font-size:1.4em;">{{ entry.total }}</div>
+                                    <div class="level-display" style="font-size:1.4em;">{{ entry.total + (entry.packsComplete.length * 25) }}</div>
                                 </div>
                             </div>
 
