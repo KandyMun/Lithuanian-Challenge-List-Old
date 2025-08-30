@@ -86,7 +86,7 @@ export default {
                                 </template>
                                 <template v-else>
                                     <div class="levels">
-                                        <div class="level-display" style="font-size:1.4em;"Nieko</div>
+                                        <div class="level-display" style="font-size:1.4em;"Nieko"</div>
                                     </div>
                                 </template>
                             </div>
