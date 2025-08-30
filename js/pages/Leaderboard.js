@@ -68,6 +68,13 @@ export default {
                                     <div class="level-display" style="font-size:1.4em;">{{ entry.total + (entry.packsComplete.length * 20) }}</div>
                                 </div>
                             </div>
+                            <!--Score-->
+                            <div class="extra" style="width:25%">
+                                <h2 style="padding:5px; width:100%">Taškai</h2>
+                                <div class="levels">
+                                    <div class="level-display" style="font-size:1.4em;">{{ entry.total + (entry.packsComplete.length * 20) }}</div>
+                                </div>
+                            </div>
 
                             <!--Hardest-->
                             <div class="extra" style="width:25%">
