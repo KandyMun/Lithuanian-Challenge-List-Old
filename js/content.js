@@ -174,7 +174,7 @@ export async function fetchLeaderboard() {
     // Wrap in extra Object containing the user and total score
     const res = Object.entries(player).map(([user, scores]) => {
         const { verifiedLevels, completedLevels, packsComplete} = scores;
-        const total = [verifiedLevels, completedLevels, packsComplete]
+        const total = [verifiedLevels, completedLevels, packsComplete.length]
             .flat()
             .reduce((prev, cur) => prev + cur.score, 0);
         const hardest = [verifiedLevels, completedLevels]
