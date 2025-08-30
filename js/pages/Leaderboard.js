@@ -70,9 +70,9 @@ export default {
                             </div>
                             <!--Score-->
                             <div class="extra" style="width:25%">
-                                <h2 style="padding:5px; width:100%">Taškai</h2>
+                                <h1 style="padding:5px; width:100%">(Taškai už pakelius)</h1>
                                 <div class="levels">
-                                    <div class="level-display" style="font-size:1.4em;">{{ entry.total + (entry.packsComplete.length * 20) }}</div>
+                                    <div class="level-display" style="font-size:1.1em;">{{entry.packsComplete.length * 20 }}</div>
                                 </div>
                             </div>
 
