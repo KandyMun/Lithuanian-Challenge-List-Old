@@ -31,7 +31,8 @@
         "levels": [
             "absolut",
             "degtine",
-            "jack_daniels"
+            "jack_daniels",
+            "jagermeister"
         ],
         "colour": "url('https://ltclimages.s-ul.eu/W4XKj8A9')"
     },
@@ -58,7 +59,8 @@
         "levels": [
             "maxima_is_cool",
             "i_love_ikea",
-            "lidl"
+            "lidl",
+            "i_dislike_rimi"
         ],
         "colour": "url('https://ltclimages.s-ul.eu/5SbkRLPe')"
     },
@@ -67,7 +69,8 @@
         "levels": [
             "melyninis_miau",
             "have_fun",
-            "kandyman_chamber"
+            "kandyman_chamber",
+            "enjoy_the_experience"
         ],
         "colour": "url('https://ltclimages.s-ul.eu/Pc9FxeBd')"
     },
@@ -76,7 +79,8 @@
         "levels": [
             "fcl_is_biased",
             "adrenalinas",
-            "surfaced"
+            "surfaced",
+            "fcl_is_bigoted"
         ],
         "colour": "url('https://ltclimages.s-ul.eu/dXM0x1LQ')"
     },
@@ -94,7 +98,9 @@
         "levels": [
             "ardour",
             "singularity",
-            "lemon"
+            "lemon",
+            "lektuvas",
+            "le_fish_au_chocolat"
         ],
         "colour": "url('https://ltclimages.s-ul.eu/9tQ7Hyeo')"
     },
@@ -103,7 +109,8 @@
         "levels": [
             "viso_gero",
             "h_ell",
-            "holy_moly"
+            "holy_moly",
+            "superslaveryworld"
         ],
         "colour": "url('https://ltclimages.s-ul.eu/rwKnWkdu')"
     },
@@ -127,6 +134,64 @@
             "reddit_landscape"
         ],
         "colour": "url('https://ltclimages.s-ul.eu/KXjL43AG')"
+    },
+    {
+        "name": "ignitis",
+        "levels": [
+            "electro_magnetism",
+            "natura_electrum",
+            "askeral"
+        ],
+        "colour": "url('https://ltclimages.s-ul.eu/OyEIavaY')"
+    },
+    {
+        "name": "juoda balta",
+        "levels": [
+            "oppression",
+            "undisclosed",
+            "v_o_i_d",
+            "ufo_challenge",
+            "blossom"
+        ],
+        "colour": "url('https://ltclimages.s-ul.eu/0UJO0Us5')"
+    },
+    {
+        "name": "greitas maistas",
+        "levels": [
+            "fri_bulvytes",
+            "mesainis",
+            "kebabas"
+        ],
+        "colour": "url('https://ltclimages.s-ul.eu/CONN4xyo')"
+    },
+    {
+        "name": "challenge remakes",
+        "levels": [
+            "mr_mitten",
+            "3_seconds_rgb",
+            "nostalgia_bait"
+        ],
+        "colour": "url('https://ltclimages.s-ul.eu/OvACLECx')"
+    },
+    {
+        "name": "demon remakes",
+        "levels": [
+            "undisclosed",
+            "superslaveryworld",
+            "lost",
+            "direction",
+            "func_1"
+        ],
+        "colour": "url('https://ltclimages.s-ul.eu/je2tUO7o')"
+    },
+    {
+        "name": "FCL",
+        "levels": [
+            "fcl_is_biased",
+            "fcl_is_bigoted",
+            "fitler_of_hcl"
+        ],
+        "colour": "url('https://ltclimages.s-ul.eu/NZAT2trV')"
     }
     
     
