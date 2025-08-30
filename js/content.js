@@ -178,13 +178,14 @@ export async function fetchLeaderboard() {
             .flat()
             .reduce((prev, cur) => prev + cur.score, 0);
         const hardest = [verifiedLevels, completedLevels]
+            const packBonus = packsComplete.length * 20;
         .flat()
         .reduce(function(prev, cur) {
             return (prev.rank < cur.rank) ? prev : cur;
         });
         return {
             user,
-            total: round(total),
+            total: round(total + packBonus),
             ...scores,
             hardest,
         };
