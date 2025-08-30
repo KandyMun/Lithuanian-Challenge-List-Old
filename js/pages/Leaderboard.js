@@ -70,7 +70,7 @@ export default {
                             </div>
                             <!--Score-->
                             <div class="extra" style="width:25%">
-                                <h style="padding:5px; width:100%">(Taškai už pakelius)</h4>
+                                <h4 style="padding:5px; width:100%">(Taškai už pakelius)</h4>
                                 <div class="levels">
                                     <div class="level-display" style="font-size:1.1em;">{{entry.packsComplete.length * 20 }}</div>
                                 </div>
