@@ -185,7 +185,7 @@ export async function fetchLeaderboard() {
         return {
             user,
             total: round(total),
-            ...scores + (user.packsComplete.length * 20),
+            ...scores,
             hardest,
         };
     });
