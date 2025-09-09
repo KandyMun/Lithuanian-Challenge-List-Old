@@ -112,7 +112,7 @@ export default {
               įeinant į lygį, turi parodyt ir tai)
                     </p>
                     <p>
-                        Po lygio įveikimo turi būti matomas "Level Complete" tekstas.
+                        Po lygio įveikimo turi būti matoma "Level Complete" lentelė (endscreen'as). Jei kampe įjungtas Cheat Indicator, užtenka tik "Level Complete" teksto.
                     </p>
                     <p>
                         Lygius pereikite kaip skirta. Jei skip/bug praleidžią didelę dalį lygio jūsų įveikimo tikrai nepriimsime. Jei challenge esmė yra prastas matomumas ar kažkas panašaus, hack'ai "No Camera Zoom", "No Camera Move", "No Particles" ir "No Shaders" nėra leidžiami.
@@ -123,7 +123,7 @@ export default {
               tiek visually appealing. OBJEKTŲ SPAM =/= DEKORACIJA, nebent ji padaryta tinkamai (pavyzdžiui Slick Challenge
               series, Say Gex). Default layout blokus naudot galima, bet tada turi būti labai geros ir pilnai užpildytos
               struktūros, ir/arba normalesnė fono dekoracija. Ar jūsų lygio dekoracija gerai atrodo nusprendžia list
-              modai.
+              modai, tad jei ir jūsų lygis atrodo pilnas, bet nuo jo norisi vemt, mes laisvai galime jį atmesti.
                     </p>
                     <p>
                         Challenge turi būti visiškai originalus.
