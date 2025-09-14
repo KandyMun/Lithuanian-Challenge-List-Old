@@ -1,0 +1,29 @@
+{
+    "id": 125788991,
+    "name": "Perkuno Kardas",
+    "author": "NojusGaminGG",
+    "creators": ["NojusGaminGG","hextorus", "S3N1"],
+    "verifier": "NojusGaminGG",
+    "verification": "https://youtu.be/8M7989D58As",
+    "password": "",
+    "records":[
+
+        {
+            "user": "S3N1",
+            "enjoyment": null
+        },
+        {
+            "user": "hextorus",
+            "enjoyment": null
+        },
+        {
+            "user": "taiga",
+            "enjoyment": 8
+        },
+        {
+            "user": "danz",
+            "enjoyment": 8
+        }
+
+    ]
+}
