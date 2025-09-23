@@ -63,7 +63,10 @@
         {
             "user": "taiga",
             "enjoyment": 6
+        },
+        {
+            "user": "feit",
+            "enjoyment": 6
         }
-        
     ]
 }
