@@ -140,6 +140,9 @@ export default {
               patvirtinimas gali būti ne lietuvio.
                     </p>
                     <p>
+                        Challenge'ai privalo būti patvirtinami be CBF.
+                    </p>
+                    <p>
                         Naudok bendrą išprusimą ir neieškok spragų taisyklėse.
                     </p>
                 </div>
