@@ -29,6 +29,14 @@
         {
           "user": "ta1p",
           "enjoyment": 5
+        },
+        {
+            "user": "Teetaz",
+            "enjoyment": 7.7
+        },
+        {
+            "user": "taiga",
+            "enjoyment": 7
         }
     ]
 }
