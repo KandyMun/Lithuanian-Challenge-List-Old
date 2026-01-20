@@ -24,6 +24,7 @@
     padding-right: 0.5rem;
     grid-column: 1;
     grid-row: 2;
+    max-height: calc(100vh - 8rem);
 }
 
 /* Pack Card */
@@ -74,7 +75,7 @@
     background-color: rgba(0,0,0,0.7);
     border: none;
     border-bottom: 1px solid rgba(255,255,255,0.1);
-    border-radius: 0;
+    border-radius: 0.4rem;
     padding: 0.5rem 0.8rem;
     color: white;
     cursor: pointer;
@@ -91,12 +92,14 @@
 }
 
 .pack-card .levels button:first-child {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+    border-top-left-radius: 0.4rem;
+    border-top-right-radius: 0.4rem;
 }
 
 .pack-card .levels button:last-child {
     border-bottom: none;
+    border-bottom-left-radius: 0.4rem;
+    border-bottom-right-radius: 0.4rem;
 }
 
 .pack-card .levels button::before {
