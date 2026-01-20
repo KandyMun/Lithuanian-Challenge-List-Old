@@ -124,34 +124,36 @@
 }
 
 .level-container h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: bold;
     text-align: center;
-    margin: 1rem 0;
+    margin: 0.5rem 0;
     line-height: 1.3;
 }
 
 .level-container h2 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
-    margin: 1.5rem 0 1rem 0;
+    margin: 1rem 0 0.5rem 0;
     line-height: 1.3;
 }
 
 .level-container p {
     line-height: 1.6;
-    margin: 0.5rem 0;
+    margin: 0.3rem 0;
+    font-size: 0.95rem;
 }
 
 .level-container li {
     line-height: 1.6;
+    font-size: 0.95rem;
 }
 
 .level-container .level-authors {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    margin: 1.5rem 0;
+    gap: 1rem;
+    margin: 0.8rem 0;
     text-align: center;
     width: 100%;
 }
@@ -159,44 +161,46 @@
 .level-container .level-authors .author-section {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.3rem;
     line-height: 1.5;
+    font-size: 0.9rem;
 }
 
 .level-container .level-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.4rem;
     justify-content: center;
-    margin: 1.5rem 0;
+    margin: 0.8rem 0;
 }
 
 .level-container .video {
     width: 95%;
-    max-width: 900px;
+    max-width: 700px;
     aspect-ratio: 16/9;
     border-radius: 0.5rem;
-    margin: 1.5rem 0;
+    margin: 0.8rem 0;
 }
 
 .level-container .stats {
     display: flex;
     justify-content: center;
-    gap: 2rem;
-    margin: 1.5rem 0;
-    font-size: 1.1rem;
+    gap: 1.5rem;
+    margin: 0.8rem 0;
+    font-size: 0.95rem;
     line-height: 1.6;
 }
 
 .level-container .records {
     width: 95%;
-    max-width: 900px;
+    max-width: 700px;
     border-collapse: collapse;
     text-align: center;
-    margin-top: 1.5rem;
-    line-height: 1.8;
+    margin-top: 0.8rem;
+    line-height: 1.6;
+    font-size: 0.9rem;
 }
 
 .level-container .records td {
-    padding: 0.6rem 0.8rem;
+    padding: 0.4rem 0.6rem;
 }
