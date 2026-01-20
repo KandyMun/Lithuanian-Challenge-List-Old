@@ -1,7 +1,7 @@
 /* ===== GLOBAL LAYOUT ===== */
 .pack-list {
     display: grid;
-    grid-template-columns: 2fr 4fr;
+    grid-template-columns: 2fr 4fr; /* 2 columns for packs, rest for level info */
     gap: 2rem;
     font-family: "Lexend Deca", sans-serif;
     min-height: 100vh;
@@ -50,11 +50,12 @@
     padding: 0.75rem 1rem;
     text-align: start;
     cursor: pointer;
-    transition: background-color 0.15s ease;
+    transition: background-color 0.15s ease, transform 0.1s ease;
 }
 
 .pack-level-btn:hover {
     background-color: rgba(0,0,0,0.4);
+    transform: translateY(-1px);
 }
 
 .pack-level-btn.active {
@@ -85,14 +86,14 @@
     text-align: left;
 }
 
-/* Video */
+/* ===== VIDEO ===== */
 .level-container .video {
     width: 100%;
     aspect-ratio: 16 / 9;
     border-radius: 0.75rem;
 }
 
-/* Stats and Records */
+/* ===== STATS AND RECORDS ===== */
 .level-container .stats {
     display: flex;
     justify-content: space-evenly;
@@ -103,25 +104,29 @@
 .level-container .records {
     width: 100%;
     table-layout: fixed;
+    border-collapse: collapse;
 }
 
-.level-container .records tr td:not(:last-child) {
-    padding-right: 1rem;
+.level-container .records tr td {
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.level-container .records .enjoyment,
-.level-container .records .user,
-.level-container .records .hz {
-    padding-block: 1rem;
+.level-container .records .enjoyment {
+    width: 60px; /* fixed width for % column */
+    text-align: center;
 }
 
 .level-container .records .user {
-    width: 100%;
+    width: auto;
+    text-align: left;
 }
 
-.level-container .records .enjoyment,
-.level-container .records .hz {
-    text-align: end;
+.level-container .records .mobile {
+    width: 40px; /* small icon column */
+    text-align: center;
 }
 
 .level-container a:hover {
