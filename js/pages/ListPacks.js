@@ -1,3 +1,10 @@
+import Spinner from "../components/Spinner.js";
+import LevelAuthors from "../components/List/LevelAuthors.js";
+import { fetchPacks, fetchPackLevels } from "../content.js";
+import { getFontColour, embed } from "../util.js";
+import { score } from "../score.js";
+import { store } from "../main.js";
+
 export default {
     components: {
         Spinner,
