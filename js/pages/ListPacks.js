@@ -1,9 +1,10 @@
-import Spinner from "../components/Spinner.js";
-import LevelAuthors from "../components/List/LevelAuthors.js";
 import { fetchPacks, fetchPackLevels } from "../content.js";
 import { getFontColour, embed } from "../util.js";
 import { score } from "../score.js";
 import { store } from "../main.js";
+
+import Spinner from "../components/Spinner.js";
+import LevelAuthors from "../components/List/LevelAuthors.js";
 
 export default {
     components: {
@@ -15,41 +16,27 @@ export default {
             <Spinner></Spinner>
         </main>
         <main v-else class="pack-list">
-            <!-- PAGE TITLE -->
-            <div class="packs-title">PAKELIAI</div>
-
-            <!-- PACKS NAV -->
             <div class="packs-nav">
                 <div>
-                    <button 
-                        v-for="(pack, i) in packs" 
-                        :key="i"
-                        @click="switchLevels(i)" 
-                        :style="{background: pack.colour}" 
-                        class="type-label-lg"
-                    >
-                        {{ pack.name }}
+                    <button @click="switchLevels(i)" v-for="(pack, i) in packs" :style="{background: pack.colour}" class="type-label-lg">
+                        <p>{{pack.name}}</p>
                     </button>
                 </div>
             </div>
-
-            <!-- LEVEL LIST -->
             <div class="list-container">
                 <table class="list" v-if="selectedPackLevels">
-                    <tr v-for="(level, i) in selectedPackLevels" :key="i">
+                    <tr v-for="(level, i) in selectedPackLevels">
                         <td class="rank">
                             <p class="type-label-lg">#{{ i + 1 }}</p>
                         </td>
                         <td class="level" :class="{ 'active': selectedLevel == i, 'error': !level[0] }">
-                            <button :style="[selectedLevel == i ? {background: 'white'}:{}]" @click="selectedLevel = i">
+                            <button :style="[selectedLevel == i ? {background: white}:{}]" @click="selectedLevel = i">
                                 <span class="type-label-lg">{{ level[0]?.level.name || \`Error (\${level[1]}.json)\` }}</span>
                             </button>
                         </td>
                     </tr>
                 </table>
             </div>
-
-            <!-- LEVEL INFO PANEL -->
             <div class="level-container">
                 <div class="level" v-if="selectedPackLevels[selectedLevel][0]">
                     <h1>{{ selectedPackLevels[selectedLevel][0].level.name }}</h1>
@@ -58,32 +45,32 @@ export default {
                         :creators="selectedPackLevels[selectedLevel][0].level.creators" 
                         :verifier="selectedPackLevels[selectedLevel][0].level.verifier"
                     ></LevelAuthors>
-
-                    <!-- PACK TAGS -->
-                    <div class="packs">
-                        <div v-for="pack in selectedPackLevels[selectedLevel][0].level.packs" 
-                            class="tag" 
-                            :style="{background: pack.colour, color: getFontColour(pack.colour)}">
-                            {{ pack.name }}
+                    <div style="display:flex; flex-wrap: wrap; gap: 0.4em;">
+                        <div v-for="pack in selectedPackLevels[selectedLevel][0].level.packs" class="tag" :style="{background:pack.colour, color:getFontColour(pack.colour)}">
+                            {{pack.name}}
                         </div>
                     </div>
-
-                    <!-- VIDEO -->
+                    <div v-if="selectedPackLevels[selectedLevel][0].level.showcase" class="tabs">
+                        <button class="tab type-label-lg" :class="{selected: !toggledShowcase}" @click="toggledShowcase = false">
+                            <span class="type-label-lg">Verification</span>
+                        </button>
+                        <button class="tab" :class="{selected: toggledShowcase}" @click="toggledShowcase = true">
+                            <span class="type-label-lg">Showcase</span>
+                        </button>
+                    </div>
                     <iframe class="video" :src="video" frameborder="0"></iframe>
-
-                    <!-- STATS -->
                     <ul class="stats">
                         <li>
                             <div class="type-title-sm">Lygio ID</div>
                             <p>{{ selectedPackLevels[selectedLevel][0].level.id }}</p>
                         </li>
                     </ul>
-
-                    <!-- RECORDS -->
                     <h2>Rekordai</h2>
                     <table class="records">
-                        <tr v-for="(record, i) in selectedPackLevels[selectedLevel][0].records" :key="i" class="record">
-                            <td class="enjoyment"><p>100%</p></td>
+                        <tr v-for="record in selectedPackLevels[selectedLevel][0].records" class="record">
+                            <td class="enjoyment">
+                                <p>100%</p>
+                            </td>
                             <td class="user">
                                 <a :href="record.link" target="_blank" class="type-label-lg">{{ record.user }}</a>
                             </td>
@@ -93,18 +80,14 @@ export default {
                         </tr>
                     </table>
                 </div>
-
-                <!-- ERROR PLACEHOLDER -->
                 <div v-else class="level" style="height: 100%; justify-content: center; align-items: center;">
                     <p>(ノಠ益ಠ)ノ彡┻━┻</p>
                 </div>
             </div>
-
-            <!-- ERROR MESSAGES -->
             <div class="meta-container">
                 <div class="meta">
                     <div class="errors" v-show="errors.length > 0">
-                        <p class="error" v-for="(error, i) of errors" :key="i">{{ error }}</p>
+                        <p class="error" v-for="error of errors">{{ error }}</p>
                     </div>
                 </div>
             </div>
@@ -123,10 +106,14 @@ export default {
     }),
     computed: {
         video() {
-            const level = this.selectedPackLevels[this.selectedLevel][0]?.level;
-            if (!level) return '';
-            if (!level.showcase) return embed(level.verification);
-            return embed(this.toggledShowcase ? level.showcase : level.verification);
+            if (!this.selectedPackLevels[this.selectedLevel][0]?.level.showcase) {
+                return embed(this.selectedPackLevels[this.selectedLevel][0].level.verification);
+            }
+            return embed(
+                this.toggledShowcase
+                    ? this.selectedPackLevels[this.selectedLevel][0].level.showcase
+                    : this.selectedPackLevels[this.selectedLevel][0].level.verification
+            );
         },
     },
     async mounted() {
@@ -134,7 +121,7 @@ export default {
         this.selectedPackLevels = await fetchPackLevels(this.packs[this.selected].name);
 
         if (!this.packs) {
-            this.errors = ["Nepavyko pakrauti sąrašo. Pabandykite po kelių minučių."];
+            this.errors = ["Nepavyko pakrauti sąrašo. Pabandykite po kelių minučių arba praneškite sąrašo moderatoriams."];
         } else {
             this.errors.push(
                 ...this.selectedPackLevels.filter(([_, err]) => err).map(([_, err]) => `Nepavyko pakrauti lygio. (${err}.json)`)
@@ -153,7 +140,7 @@ export default {
 
             this.errors.length = 0;
             if (!this.packs) {
-                this.errors = ["Nepavyko pakrauti sąrašo. Pabandykite po kelių minučių."];
+                this.errors = ["Nepavyko pakrauti sąrašo. Pabandykite po kelių minučių arba praneškite sąrašo moderatoriams."];
             } else {
                 this.errors.push(
                     ...this.selectedPackLevels.filter(([_, err]) => err).map(([_, err]) => `Nepavyko pakrauti lygio. (${err}.json)`)
