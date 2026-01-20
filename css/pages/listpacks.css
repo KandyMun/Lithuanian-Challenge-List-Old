@@ -71,18 +71,20 @@
 
 /* ===== LEVEL INFO COLUMN ===== */
 .level-container {
-    min-width: 0;
     display: flex;
-    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
 }
 
 .level-container .level {
-    width: 100%;
-    max-width: 48rem;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    align-items: stretch;
+    width: 100%;
+    min-width: 0;
+    padding: 1rem;
+    box-sizing: border-box;
     text-align: left;
 }
 
@@ -91,6 +93,16 @@
     width: 100%;
     aspect-ratio: 16 / 9;
     border-radius: 0.75rem;
+}
+
+/* ===== TAGS ===== */
+.tag {
+    font-family: "Lexend Deca", sans-serif;
+    display: inline-block;
+    border-radius: 14px;
+    color: white;
+    text-shadow: 2px 2px 4px black;
+    padding: 5px 10px;
 }
 
 /* ===== STATS AND RECORDS ===== */
@@ -115,7 +127,7 @@
 }
 
 .level-container .records .enjoyment {
-    width: 60px; /* fixed width for % column */
+    width: 60px;
     text-align: center;
 }
 
@@ -125,22 +137,12 @@
 }
 
 .level-container .records .mobile {
-    width: 40px; /* small icon column */
+    width: 40px;
     text-align: center;
 }
 
 .level-container a:hover {
     text-decoration: underline;
-}
-
-/* ===== TAGS ===== */
-.tag {
-    font-family: "Lexend Deca", sans-serif;
-    display: inline-block;
-    border-radius: 14px;
-    color: white;
-    text-shadow: 2px 2px 4px black;
-    padding: 5px 10px;
 }
 
 /* ===== ERROR MESSAGES ===== */
@@ -155,4 +157,45 @@
     background-color: var(--color-error);
     color: var(--color-on-error);
     border-radius: 0.5rem;
+}
+
+/* ===== TOP NAV FIX ===== */
+.top-nav {
+    display: flex;
+    justify-content: center; /* center tabs */
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--color-background-hover);
+    height: 60px;
+    padding: 0 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    overflow-x: auto;
+}
+
+.top-nav button {
+    flex: 0 0 auto;
+    min-width: 100px;
+    height: 40px;
+    padding: 0 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: rgba(0,0,0,0.25);
+    color: white;
+    font-family: "Lexend Deca", sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    white-space: nowrap;
+    text-align: center;
+    transition: background-color 0.15s ease;
+}
+
+.top-nav button:hover {
+    background-color: rgba(0,0,0,0.4);
+}
+
+.top-nav button.active {
+    background-color: rgba(255,255,255,0.7);
+    color: black;
 }
