@@ -15,7 +15,7 @@ export default {
         <main v-else class="pack-list">
             <h1 class="page-title">PAKELIAI</h1>
             <div class="packs-grid">
-                <div v-for="(pack, i) in packs" class="pack-card" :style="{ backgroundImage: 'url(' + pack.image + ')' }">
+                <div v-for="(pack, i) in packs" class="pack-card" :style="{ backgroundImage: pack.colour }">
                     <h2 class="pack-name">{{ pack.name }}</h2>
                     <div class="levels">
                         <button v-for="(level, j) in selectedPackLevelsByIndex[i]" 
