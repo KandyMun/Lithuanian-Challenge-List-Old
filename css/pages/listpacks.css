@@ -1,112 +1,153 @@
-/* ===== MAIN LAYOUT ===== */
-
+/* ===== GLOBAL LAYOUT ===== */
 .pack-list {
     display: grid;
-    grid-template-columns: 2fr 4fr 2fr;
+    grid-template-columns: 2fr 4fr;
     gap: 2rem;
-
     font-family: "Lexend Deca", sans-serif;
+    min-height: 100vh;
+    padding: 1rem;
 }
 
-/* ===== PACK GRID ===== */
-
+/* ===== PACK COLUMN ===== */
 .pack-boxes-container {
-    margin-top: 70px;
-    padding: 2rem 1rem;
-
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
-
-    align-content: start;
+    align-items: start;
 }
 
 /* ===== PACK BOX ===== */
-
 .pack-box {
+    background-clip: padding-box;
     border-radius: 1rem;
     padding: 1rem;
-
-    color: white;
-    text-shadow: 2px 2px 2px black;
-
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    color: white;
+    text-shadow: 2px 2px 2px black;
 }
 
 /* ===== PACK TITLE ===== */
-
 .pack-header {
+    font-weight: 700;
     margin-bottom: 0.5rem;
 }
 
-/* ===== LEVEL LIST ===== */
-
+/* ===== LEVEL BUTTONS ===== */
 .pack-levels {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
 
-/* ===== LEVEL BUTTON (RESTORED STYLE) ===== */
-
 .pack-level-btn {
-    background-color: var(--color-background);
+    background-color: rgba(0,0,0,0.25);
     color: white;
-
     border: none;
-    border-radius: 3rem;
-
-    padding: 1rem;
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
     text-align: start;
-
-    word-break: normal;
-    overflow-wrap: anywhere;
-
     cursor: pointer;
-    background-size: 100% 100% !important;
+    transition: background-color 0.15s ease;
 }
 
 .pack-level-btn:hover {
-    background-color: var(--color-background-hover);
-    color: var(--color-on-background-hover);
+    background-color: rgba(0,0,0,0.4);
 }
 
 .pack-level-btn.active {
-    background-color: rgba(255,255,255,.5);
+    background-color: rgba(255,255,255,0.7);
     color: black;
 }
 
 .pack-level-btn.error {
-    color: var(--color-error);
+    opacity: 0.6;
     cursor: not-allowed;
     text-decoration: line-through;
 }
 
-/* ===== LEVEL PANEL FIXES ===== */
-
-.pack-list .level-container {
-    min-width: 0; /* CRITICAL for grid */
+/* ===== LEVEL INFO COLUMN ===== */
+.level-container {
+    min-width: 0;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
-.pack-list .level-container .level {
+.level-container .level {
     width: 100%;
     max-width: 48rem;
-
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    align-items: stretch;
+    text-align: left;
 }
 
-.pack-list .level-container .video {
+/* Video */
+.level-container .video {
     width: 100%;
     aspect-ratio: 16 / 9;
+    border-radius: 0.75rem;
 }
 
-.pack-list .level-container .records {
+/* Stats and Records */
+.level-container .stats {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    gap: 1rem;
+}
+
+.level-container .records {
     width: 100%;
     table-layout: fixed;
+}
+
+.level-container .records tr td:not(:last-child) {
+    padding-right: 1rem;
+}
+
+.level-container .records .enjoyment,
+.level-container .records .user,
+.level-container .records .hz {
+    padding-block: 1rem;
+}
+
+.level-container .records .user {
+    width: 100%;
+}
+
+.level-container .records .enjoyment,
+.level-container .records .hz {
+    text-align: end;
+}
+
+.level-container a:hover {
+    text-decoration: underline;
+}
+
+/* ===== TAGS ===== */
+.tag {
+    font-family: "Lexend Deca", sans-serif;
+    display: inline-block;
+    border-radius: 14px;
+    color: white;
+    text-shadow: 2px 2px 4px black;
+    padding: 5px 10px;
+}
+
+/* ===== ERROR MESSAGES ===== */
+.meta-container .errors {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.meta-container .errors .error {
+    padding: 1rem;
+    background-color: var(--color-error);
+    color: var(--color-on-error);
+    border-radius: 0.5rem;
 }
