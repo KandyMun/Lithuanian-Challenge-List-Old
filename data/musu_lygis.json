@@ -58,6 +58,10 @@
         {
           "user": "S3N1",
           "enjoyment": 1
+        },
+        {
+          "user": "taiga",
+          "enjoyment": 3.5
         }
         
     ]
