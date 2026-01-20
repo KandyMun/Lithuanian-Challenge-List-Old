@@ -1,7 +1,7 @@
 .pack-list {
     display: grid;
     grid-template-columns: minmax(380px, 450px) 1fr;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: 1fr;
     gap: 1.5rem;
     padding: 2rem;
     height: calc(100vh - 5rem); /* minus top bar height */
@@ -9,8 +9,7 @@
 }
 
 .pack-list .page-title {
-    grid-column: 1 / -1;
-    margin: 0 0 1rem 0;
+    display: none;
 }
 
 /* === Left: Packs Grid === */
@@ -19,10 +18,12 @@
     grid-template-columns: 1fr 1fr; /* 2 columns */
     gap: 1rem;
     overflow-y: auto;
+    overflow-x: hidden;
     padding-right: 0.5rem;
     grid-column: 1;
-    grid-row: 2;
+    grid-row: 1;
     max-height: calc(100vh - 8rem);
+    width: 100%;
 }
 
 /* Pack Card */
@@ -131,7 +132,7 @@
     background-color: var(--color-background-hover);
     overflow-y: auto;
     grid-column: 2;
-    grid-row: 2;
+    grid-row: 1;
     width: 100%;
 }
 
