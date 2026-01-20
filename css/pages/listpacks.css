@@ -31,12 +31,13 @@
     position: relative;
     background-size: cover;
     background-position: center;
+    background-color: var(--color-background);
     border-radius: 1rem;
     padding: 1rem;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    min-height: 180px;
+    min-height: auto;
     box-shadow: 0 4px 10px rgba(0,0,0,0.4);
     overflow: hidden;
 }
@@ -48,7 +49,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 100%);
+    background: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 100%);
     pointer-events: none;
 }
 
