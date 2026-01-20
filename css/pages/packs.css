@@ -1,6 +1,6 @@
 .pack-list {
     display: grid;
-    grid-template-columns: minmax(280px, 350px) 1fr minmax(250px, 300px);
+    grid-template-columns: minmax(380px, 450px) 1fr minmax(250px, 300px);
     grid-template-rows: auto 1fr;
     gap: 1.5rem;
     padding: 2rem;
@@ -59,15 +59,21 @@
     color: white;
     cursor: pointer;
     text-align: left;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
 }
 
 .pack-card .levels button:hover {
-    background-color: rgba(255,255,255,0.3);
+    background-color: rgba(255,255,255,0.4);
+    transform: translateX(4px);
 }
 
 .pack-card .levels button.active {
-    background-color: rgba(255,255,255,0.7);
+    background-color: rgba(255,255,255,0.85);
     color: black;
+    font-weight: 600;
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.2);
 }
 
 /* === Right: Level Info Panel === */
