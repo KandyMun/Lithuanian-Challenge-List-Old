@@ -2,7 +2,7 @@
     "id": 124745775,
     "name": "Those Who Patapim X",
     "author": "taiga",
-    "creators": ["taiga, ta1p"],
+    "creators": ["taiga", "ta1p"],
     "verifier": "taiga",
     "verification": "https://youtu.be/Bh-rfU3dRyI",
        "password": "",
@@ -18,6 +18,10 @@
         {
             "user": "ta1p",
             "enjoyment": null
+        },
+        {
+            "user": "Algirdas42",
+            "enjoyment": 6.5
         }
         
     ]

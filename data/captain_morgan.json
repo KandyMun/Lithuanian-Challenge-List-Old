@@ -1,0 +1,29 @@
+{
+    "id": 126300461,
+    "name": "Captain Morgan",
+    "author": "Soverney",
+    "creators": ["Soverney"],
+    "verifier": "Soverney",
+    "verification": "https://youtu.be/1G1W1bSh7T8?si=faWFb-oH7wsg55Nh",
+    "records": [
+
+        {
+            "user": "ta1p",
+            "enjoyment": 10
+        },
+        {
+            "user": "taiga",
+            "enjoyment": 3
+        },
+        {
+            "user": "hextorus",
+            "enjoyment": 7.5
+        },
+        {
+            "user": "S3N1",
+            "enjoyment": 7
+        }
+
+
+    ]
+}
