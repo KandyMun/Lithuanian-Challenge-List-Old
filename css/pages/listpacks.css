@@ -14,6 +14,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
     align-items: start;
+    margin-top: 1rem; /* start a bit lower to avoid overlap */
 }
 
 /* ===== PACK BOX ===== */
@@ -93,6 +94,8 @@
     width: 100%;
     aspect-ratio: 16 / 9;
     border-radius: 0.75rem;
+    max-height: 360px; /* slightly smaller */
+    object-fit: cover;
 }
 
 /* ===== TAGS ===== */
@@ -127,7 +130,7 @@
 }
 
 .level-container .records .enjoyment {
-    width: 60px;
+    width: 60px; /* fixed width for % column */
     text-align: center;
 }
 
@@ -137,12 +140,26 @@
 }
 
 .level-container .records .mobile {
-    width: 40px;
+    width: 40px; /* small icon column */
     text-align: center;
 }
 
 .level-container a:hover {
     text-decoration: underline;
+}
+
+/* ===== LEVEL ID ===== */
+.level-container .stats li p {
+    margin-top: 0.25rem; /* spacing under label */
+}
+
+/* ===== LEVEL AUTHORS / CREATORS / VERIFIER ===== */
+.level-container .level-authors {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    grid-auto-rows: max-content;
+    gap: 0.5rem 1rem; /* row gap / column gap */
+    align-items: center;
 }
 
 /* ===== ERROR MESSAGES ===== */
