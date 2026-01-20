@@ -1,20 +1,172 @@
-/* ===== GLOBAL LAYOUT ===== */
+:root {
+    --color-background: #1c1b1f;
+    --color-on-background: white;
+    --color-background-hover: #27262c;
+    --color-on-background-hover: white;
+    --color-primary: #383838;
+    --color-primary-disabled: #1f213c;
+    --color-on-primary: white;
+    --color-error: #de0000;
+    --color-on-error: white;
+    overflow-x: hidden;
+}
+
+@keyframes marquee { 
+    0% { transform: translateX(100%); } 
+    100% { transform: translateX(-100%); } 
+}
+@keyframes color-change {
+    16.5% { color: rgb(5, 196, 5); }
+    49.5% { color: red; }
+    83.5% { color: yellow; }
+}
+
+main.dark,
+header.dark {
+    color-scheme: dark;
+    --color-background: #1c1b1f;
+    --color-on-background: white;
+    --color-background-hover: #27262c;
+    --color-on-background-hover: white;
+    --color-primary: #383838;
+    --color-primary-disabled: #1f213c;
+    --color-on-primary: white;
+    --color-error: #de0000;
+    --color-on-error: white;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+header,
+main {
+    background-color: var(--color-background);
+    color: var(--color-on-background);
+    display: grid;
+    grid-template-columns: minmax(16rem, 1fr) minmax(16rem, 2fr) minmax(16em, 1fr);
+    column-gap: 2rem;
+}
+
+header {
+    display: flex;
+    padding-inline: calc(25vw - 10rem);
+    height: 5rem;
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+}
+@media screen and (min-width: 1366px) {
+    header {
+        display: grid;
+        padding-inline: 0;
+    }
+}
+
+header .MOTD {
+    position: absolute;
+    margin-top: 60px;
+    top: -58px;
+    width: 100%;
+    display: flex;
+    animation: marquee 20s linear infinite, color-change 5s linear infinite;
+    text-shadow: 2px 3px 3px rgba(0,0,0,0.6);
+    overflow-x: hidden;
+    font-family: "Lexend Deca", sans-serif;
+    color: yellow;
+}
+
+header .logo {
+    justify-self: end;
+    align-self: center;
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+header .nav {
+    flex: 1;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    overflow-x: auto; /* scroll if too many tabs */
+}
+
+header .nav button {
+    flex: 0 0 auto;
+    min-width: 140px; /* wider buttons */
+    height: 50px; /* taller */
+    padding: 0 1.5rem;
+    border-radius: 0.75rem;
+    border: none;
+    background-color: rgba(0,0,0,0.25);
+    color: white;
+    font-family: "Lexend Deca", sans-serif;
+    font-size: 1.1rem;
+    cursor: pointer;
+    white-space: nowrap;
+    text-align: center;
+    transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+header .nav button:hover {
+    background-color: rgba(0,0,0,0.4);
+    transform: translateY(-1px);
+}
+
+header .nav button.active {
+    background-color: rgba(255,255,255,0.8);
+    color: black;
+}
+
+main {
+    height: 0;
+    flex: 1;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr);
+    column-gap: 2rem;
+}
+
+main > div {
+    overflow-y: auto;
+}
+
+.spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-column: span 3;
+}
+
+input[type="checkbox"] {
+    height: 1.25rem;
+    width: 1.25rem;
+    cursor: pointer;
+    margin: 0;
+}
+
+/* ===== PACK LIST ===== */
 .pack-list {
     display: grid;
-    grid-template-columns: 2fr 4fr; /* 2 columns for packs + level info */
+    grid-template-columns: 2fr 4fr; /* packs + level info */
     gap: 2rem;
     font-family: "Lexend Deca", sans-serif;
     min-height: 100vh;
     padding: 1rem;
 }
 
-/* ===== PACK COLUMN ===== */
+/* ===== PACKS COLUMN ===== */
 .pack-boxes-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
     align-items: start;
-    margin-top: 1rem; /* start lower to avoid overlap */
+    margin-top: 5rem; /* lower start to avoid overlap */
 }
 
 .pack-box {
@@ -34,7 +186,7 @@
     margin-bottom: 0.5rem;
 }
 
-/* ===== LEVEL BUTTONS ===== */
+/* ===== LEVEL BUTTONS INSIDE PACKS ===== */
 .pack-levels {
     display: flex;
     flex-direction: column;
@@ -68,7 +220,7 @@
     text-decoration: line-through;
 }
 
-/* ===== LEVEL INFO COLUMN ===== */
+/* ===== LEVEL INFO ===== */
 .level-container {
     min-width: 0;
 }
@@ -76,30 +228,30 @@
 .level-container .level {
     display: flex;
     flex-direction: column;
-    gap: 2rem; /* spacing */
+    gap: 2rem;
     padding-right: 2rem;
     max-width: 48rem;
     text-align: left;
 }
 
-/* ===== VIDEO ===== */
+/* VIDEO */
 .level-container .level .video {
     aspect-ratio: 16 / 9;
     border-radius: 0.75rem;
-    max-height: 360px; /* slightly smaller */
+    max-height: 360px;
     object-fit: cover;
 }
 
-/* ===== LEVEL AUTHORS / CREATOR / VERIFIER ===== */
+/* AUTHORS / CREATOR / VERIFIER */
 .level-container .level .level-authors {
     display: grid;
     grid-template-columns: max-content 1fr;
     grid-auto-rows: max-content;
-    gap: 1rem 2rem; /* increased row gap and column gap */
+    gap: 1rem 2rem; /* row + column gap */
     align-items: center;
 }
 
-/* ===== TAGS / PACKS ===== */
+/* TAGS / PACKS */
 .level-container .level .packs {
     display: flex;
     flex-wrap: wrap;
@@ -112,7 +264,7 @@
     background-size: 100% 100% !important;
 }
 
-/* ===== STATS & RECORDS ===== */
+/* STATS */
 .level-container .level .stats {
     display: flex;
     justify-content: space-evenly;
@@ -126,7 +278,7 @@
     gap: 1rem;
 }
 
-/* ===== RECORDS TABLE ===== */
+/* RECORDS TABLE */
 .level-container .level .records {
     table-layout: fixed;
     width: 100%;
@@ -137,31 +289,31 @@
 }
 
 .level-container .level .records tr td {
-    padding: 0.75rem 1rem; /* extra spacing */
+    padding: 0.75rem 1rem;
     vertical-align: middle;
 }
 
 .level-container .level .records .enjoyment {
-    width: 80px; /* fixed column for percentages */
+    width: 80px; 
     text-align: right;
 }
 
 .level-container .level .records .user {
     width: calc(100% - 80px);
     text-align: left;
-    word-break: break-word; /* wrap long usernames */
+    word-break: break-word;
 }
 
 .level-container .level .records .hz {
     text-align: end;
 }
 
-/* ===== LEVEL ID SPACING ===== */
+/* LEVEL ID SPACING */
 .level-container .level .stats li p {
     margin-top: 0.25rem;
 }
 
-/* ===== ERROR MESSAGES ===== */
+/* ERRORS */
 .meta-container .errors {
     display: flex;
     flex-direction: column;
@@ -173,46 +325,4 @@
     background-color: var(--color-error);
     color: var(--color-on-error);
     border-radius: 0.5rem;
-}
-
-/* ===== TOP NAV BAR ===== */
-.top-nav {
-    display: flex;
-    justify-content: flex-start; /* left-aligned tabs */
-    align-items: center;
-    gap: 1rem;
-    background-color: var(--color-background-hover);
-    height: 70px; /* taller nav bar */
-    padding: 0 1rem;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    overflow-x: auto;
-}
-
-.top-nav button {
-    flex: 0 0 auto;
-    min-width: 140px; /* bigger buttons */
-    height: 50px; /* taller */
-    padding: 0 1.5rem;
-    border-radius: 0.75rem;
-    border: none;
-    background-color: rgba(0,0,0,0.25);
-    color: white;
-    font-family: "Lexend Deca", sans-serif;
-    font-size: 1.1rem;
-    cursor: pointer;
-    white-space: nowrap;
-    text-align: center;
-    transition: background-color 0.15s ease, transform 0.1s ease;
-}
-
-.top-nav button:hover {
-    background-color: rgba(0,0,0,0.4);
-    transform: translateY(-1px);
-}
-
-.top-nav button.active {
-    background-color: rgba(255,255,255,0.8);
-    color: black;
 }
