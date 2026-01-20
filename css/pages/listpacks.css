@@ -9,7 +9,7 @@
     color: var(--color-on-background);
 }
 
-/* --- Packs grid --- */
+/* --- Grid of packs --- */
 .pack-list {
     display: flex;
     flex-direction: column;
@@ -20,7 +20,7 @@
 
 .packs-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
     width: 95%;
 }
@@ -36,7 +36,6 @@
     box-shadow: 0 4px 10px rgba(0,0,0,0.4);
 }
 
-/* Pack name */
 .pack-card .pack-name {
     font-family: "Lexend Deca", sans-serif;
     font-weight: bold;
@@ -44,7 +43,7 @@
     text-align: center;
 }
 
-/* Levels inside pack card */
+/* --- Levels inside pack card --- */
 .pack-card .levels {
     display: flex;
     flex-direction: column;
@@ -157,7 +156,7 @@
     border-radius: 0.5rem;
 }
 
-/* --- Small adjustments --- */
+/* --- Move packs down to avoid overlapping top nav --- */
 .pack-list .packs-nav {
-    margin-top: 2rem; /* moves packs down to avoid overlap */
+    margin-top: 2rem;
 }

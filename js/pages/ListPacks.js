@@ -1,10 +1,9 @@
+import Spinner from "../components/Spinner.js";
+import LevelAuthors from "../components/List/LevelAuthors.js";
 import { fetchPacks, fetchPackLevels } from "../content.js";
 import { getFontColour, embed } from "../util.js";
 import { score } from "../score.js";
 import { store } from "../main.js";
-
-import Spinner from "../components/Spinner.js";
-import LevelAuthors from "../components/List/LevelAuthors.js";
 
 export default {
     components: {
@@ -12,80 +11,81 @@ export default {
         LevelAuthors,
     },
     template: `
-        <main v-if="loading">
-            <Spinner></Spinner>
-        </main>
-        <main v-else class="pack-list">
-            <div class="packs-nav">
-                <div>
-                    <button @click="switchLevels(i)" v-for="(pack, i) in packs" :style="{background: pack.colour}" class="type-label-lg">
-                        <p>{{pack.name}}</p>
-                    </button>
-                </div>
+        <main>
+            <div v-if="loading" class="spinner">
+                <Spinner></Spinner>
             </div>
-            <div class="list-container">
-                <table class="list" v-if="selectedPackLevels">
-                    <tr v-for="(level, i) in selectedPackLevels">
-                        <td class="rank">
-                            <p class="type-label-lg">#{{ i + 1 }}</p>
-                        </td>
-                        <td class="level" :class="{ 'active': selectedLevel == i, 'error': !level[0] }">
-                            <button :style="[selectedLevel == i ? {background: 'white'} : {}]" @click="selectedLevel = i">
-                                <span class="type-label-lg">{{ level[0]?.level.name || \`Error (\${level[1]}.json)\` }}</span>
+
+            <div v-else class="pack-list">
+                <!-- Title -->
+                <div class="pack-title">PAKELIAI</div>
+
+                <!-- Packs Grid -->
+                <div class="packs-grid">
+                    <div v-for="(pack, i) in packs" :key="i" class="pack-card">
+                        <div class="pack-name">{{ pack.name }}</div>
+                        <div class="levels">
+                            <button 
+                                v-for="(level, j) in pack.levels" 
+                                :key="j"
+                                @click="selectLevel(i, j)"
+                                :class="{ active: selectedPack === i && selectedLevel === j }">
+                                {{ level[0]?.level.name || \`Error (\${level[1]}.json)\` }}
                             </button>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div class="level-container">
-                <div class="level" v-if="selectedPackLevels[selectedLevel][0]">
-                    <h1>{{ selectedPackLevels[selectedLevel][0].level.name }}</h1>
-                    <LevelAuthors :author="selectedPackLevels[selectedLevel][0].level.author" :creators="selectedPackLevels[selectedLevel][0].level.creators" :verifier="selectedPackLevels[selectedLevel][0].level.verifier"></LevelAuthors>
-                    <div class="packs">
-                        <div v-for="pack in selectedPackLevels[selectedLevel][0].level.packs" class="tag" :style="{background:pack.colour, color:getFontColour(pack.colour)}">
-                            {{pack.name}}
                         </div>
                     </div>
-                    <div v-if="selectedPackLevels[selectedLevel][0].level.showcase" class="tabs">
-                        <button class="tab type-label-lg" :class="{selected: !toggledShowcase}" @click="toggledShowcase = false">
-                            <span class="type-label-lg">Verification</span>
-                        </button>
-                        <button class="tab" :class="{selected: toggledShowcase}" @click="toggledShowcase = true">
-                            <span class="type-label-lg">Showcase</span>
-                        </button>
+                </div>
+
+                <!-- Level Info Section -->
+                <div class="level-container" v-if="currentLevel">
+                    <h1>{{ currentLevel.level.name }}</h1>
+                    <LevelAuthors 
+                        :author="currentLevel.level.author" 
+                        :creators="currentLevel.level.creators" 
+                        :verifier="currentLevel.level.verifier">
+                    </LevelAuthors>
+
+                    <!-- Level Packs Tags -->
+                    <div class="packs">
+                        <div 
+                            v-for="pack in currentLevel.level.packs" 
+                            class="tag" 
+                            :style="{ background: pack.colour, color: getFontColour(pack.colour) }">
+                            {{ pack.name }}
+                        </div>
                     </div>
+
+                    <!-- Video / Showcase -->
                     <iframe class="video" :src="video" frameborder="0"></iframe>
+
+                    <!-- Stats -->
                     <ul class="stats">
                         <li>
                             <div class="type-title-sm">Lygio ID</div>
-                            <p>{{ selectedPackLevels[selectedLevel][0].level.id }}</p>
+                            <p>{{ currentLevel.level.id }}</p>
                         </li>
                     </ul>
+
+                    <!-- Rekordai / Records -->
                     <h2>Rekordai</h2>
                     <table class="records">
-                        <tr v-for="record in selectedPackLevels[selectedLevel][0].records" class="record">
+                        <tr v-for="record in currentLevel.records" class="record">
                             <td class="enjoyment">
                                 <p>100%</p>
                             </td>
                             <td class="user">
-                                <a :href="record.link" target="_blank" class="type-label-lg">{{ record.user }}</a>
+                                <a :href="record.link" target="_blank">{{ record.user }}</a>
                             </td>
                             <td class="mobile">
                                 <img v-if="record.mobile" :src="\`/assets/phone-landscape\${store?.dark ? '-dark' : ''}.svg\`" alt="Mobile">
                             </td>
                         </tr>
                     </table>
-                </div>
-                <div v-else class="level" style="height: 100%; justify-content: center; align-items: center;">
-                    <p>(ノಠ益ಠ)ノ彡┻━┻</p>
-                </div>
-            </div>
-            <div class="meta-container">
-                <div class="meta">
-                    <div class="errors" v-show="errors.length > 0">
+
+                    <!-- Errors -->
+                    <div class="errors" v-if="errors.length">
                         <p class="error" v-for="error of errors">{{ error }}</p>
                     </div>
-                    <p> Pakelių funkciją sukurė KrisGra. </p>
                 </div>
             </div>
         </main>
@@ -94,82 +94,57 @@ export default {
         store,
         packs: [],
         errors: [],
-        selected: 0,
+        selectedPack: 0,
         selectedLevel: 0,
-        selectedPackLevels: [],
         loading: true,
-        loadingPack: true,
-        toggledShowcase: false,
     }),
     computed: {
-        pack() {
-            return this.packs[this.selected];
+        currentLevel() {
+            if (!this.packs[this.selectedPack]?.levels) return null;
+            return this.packs[this.selectedPack].levels[this.selectedLevel][0];
         },
         video() {
-            if (!this.selectedPackLevels[this.selectedLevel][0].level.showcase) {
-                return embed(this.selectedPackLevels[this.selectedLevel][0].level.verification);
-            }
-            return embed(this.toggledShowcase
-                ? this.selectedPackLevels[this.selectedLevel][0].level.showcase
-                : this.selectedPackLevels[this.selectedLevel][0].level.verification
-            );
+            if (!this.currentLevel) return "";
+            const level = this.currentLevel.level;
+            return embed(level.showcase || level.verification);
         },
     },
     async mounted() {
-        // Inject packs.css dynamically
-        const link = document.createElement("link");
-        link.rel = "stylesheet";
-        link.href = "/css/pages/packs.css";
-        document.head.appendChild(link);
+        try {
+            const fetchedPacks = await fetchPacks();
 
-        // Fetch packs
-        this.packs = await fetchPacks();
-
-        // Inject PAKELIAI title
-        const title = document.createElement("h1");
-        title.className = "pack-title";
-        title.textContent = "PAKELIAI";
-        document.querySelector("main").prepend(title);
-
-        this.selectedPackLevels = await fetchPackLevels(this.packs[this.selected].name);
-
-        // Error handling
-        if (!this.packs) {
-            this.errors = [
-                "Nepavyko pakrauti sąrašo. Pabandykite po kelių minučių arba praneškite sąrašo moderatoriams.",
-            ];
-        } else {
-            this.errors.push(
-                ...this.selectedPackLevels
-                    .filter(([_, err]) => err)
-                    .map(([_, err]) => `Nepavyko pakrauti lygio. (${err}.json)`)
+            // Fetch levels for each pack
+            const packsWithLevels = await Promise.all(
+                fetchedPacks.map(async pack => ({
+                    ...pack,
+                    levels: await fetchPackLevels(pack.name)
+                }))
             );
+
+            this.packs = packsWithLevels;
+
+        } catch (err) {
+            this.errors.push("Nepavyko pakrauti sąrašo. Pabandykite po kelių minučių.");
+            console.error(err);
         }
 
         this.loading = false;
-        this.loadingPack = false;
     },
     methods: {
-        async switchLevels(i) {
-            this.loadingPack = true;
-            this.selected = i;
-            this.selectedLevel = 0;
-            this.selectedPackLevels = await fetchPackLevels(this.packs[this.selected].name);
+        selectLevel(packIndex, levelIndex) {
+            this.selectedPack = packIndex;
+            this.selectedLevel = levelIndex;
 
-            this.errors.length = 0;
-            if (!this.packs) {
-                this.errors = ["Nepavyko pakrauti sąrašo. Pabandykite po kelių minučių arba praneškite sąrašo moderatoriams."];
-            } else {
-                this.errors.push(
-                    ...this.selectedPackLevels
-                        .filter(([_, err]) => err)
-                        .map(([_, err]) => `Nepavyko pakrauti lygio. (${err}.json)`)
-                );
+            // Reset errors
+            this.errors = [];
+
+            const level = this.packs[packIndex].levels[levelIndex];
+            if (!level[0]) {
+                this.errors.push(`Nepavyko pakrauti lygio. (${level[1]}.json)`);
             }
-            this.loadingPack = false;
         },
-        score,
-        embed,
         getFontColour,
+        embed,
+        score,
     },
 };
