@@ -1,6 +1,6 @@
 .pack-list {
     display: grid;
-    grid-template-columns: 2fr 3fr; /* left = packs, right = level info */
+    grid-template-columns: minmax(350px, 1fr) 1fr; /* left = packs (left-aligned), right = level info (centered) */
     gap: 1.5rem;
     padding: 2rem;
     height: calc(100vh - 5rem); /* minus top bar height */
