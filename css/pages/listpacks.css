@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    padding-top: 1rem;
+    padding-top: 4rem; /* pushed down to avoid overlap with top nav */
 }
 
 /* ===== PAGE TITLE ===== */
@@ -55,25 +55,14 @@
 }
 
 /* ===== PACKS GRID ===== */
-.pack-list .packs-grid {
+.packs-nav > div {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
-    padding: 1rem;
-}
-
-/* ===== PACK BOX ===== */
-.pack-box {
-    background-color: var(--color-background-hover);
-    border-radius: 1rem;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
 }
 
 /* ===== LEVEL BUTTONS ===== */
-.pack-box .level-button {
+.pack-list .list .level button {
     background-color: var(--color-background);
     color: var(--color-on-background);
     border: none;
@@ -88,50 +77,47 @@
     width: 100%;
 }
 
-.pack-box .level-button:hover {
+.pack-list .list .level button:hover {
     background-color: var(--color-background-hover);
 }
 
 /* ===== LEVEL INFO PANEL ===== */
-.level-container {
+.level-container .level {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    padding: 2rem;
-    color: white;
     align-items: center; /* center all content */
+    gap: 1.5rem;
+    padding: 1rem 2rem;
     max-width: 900px;
     margin: 0 auto;
 }
 
 /* ===== LEVEL TITLE ===== */
-.level-container h1 {
+.level-container .level h1 {
     font-family: "Lexend Deca", sans-serif;
     font-weight: 700;
-    font-size: 2.5rem;
+    font-size: 2rem;
     text-align: center;
-    margin-bottom: 1rem;
 }
 
 /* ===== LEVEL AUTHORS ===== */
-.level-container .level-authors {
+.level-container .level .level-authors {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.75rem; /* spacing between author, verifier, uploader */
     font-family: "Lexend Deca", sans-serif;
-    font-size: 1rem;
 }
 
-/* ===== LEVEL PACK TAGS ===== */
-.level-container .packs {
+/* ===== PACK TAGS ===== */
+.level-container .level .packs {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* center all tags */
+    justify-content: center;
     gap: 0.5rem;
 }
 
-.level-container .packs .tag {
+.level-container .level .packs .tag {
     display: inline-block;
     padding: 0.3rem 0.7rem;
     border-radius: 0.6rem;
@@ -141,32 +127,32 @@
 }
 
 /* ===== VIDEO ===== */
-.level-container .video {
+.level-container .level .video {
     width: 100%;
-    max-width: 560px; /* smaller width */
+    max-width: 560px;
     aspect-ratio: 16/9;
     border-radius: 0.5rem;
+    object-fit: contain; /* no cropping */
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 /* ===== STATS (LEVEL ID ETC) ===== */
-.level-container .stats {
+.level-container .level .stats {
     display: flex;
     justify-content: center;
     gap: 3rem;
     flex-wrap: wrap;
 }
 
-.level-container .stats li {
+.level-container .level .stats li {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
-    font-family: "Lexend Deca", sans-serif;
 }
 
 /* ===== RECORDS TABLE ===== */
-.level-container .records {
+.level-container .level .records {
     table-layout: fixed;
     width: 100%;
     max-width: 600px;
@@ -174,33 +160,32 @@
     margin-top: 1rem;
 }
 
-.level-container .records tr {
+.level-container .level .records tr {
     border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 
-.level-container .records td {
+.level-container .level .records td {
     padding: 0.5rem;
     font-family: "Lexend Deca", sans-serif;
     font-size: 1rem;
-    text-align: center; /* center usernames and percentages */
+    text-align: center;
     word-wrap: break-word;
 }
 
-.level-container .records .user {
+.level-container .level .records .user {
     width: 50%;
 }
 
-.level-container .records .enjoyment {
+.level-container .level .records .enjoyment {
     width: 20%;
 }
 
-/* Hover effect for user links */
-.level-container .records a:hover {
+.level-container .level .records a:hover {
     text-decoration: underline;
 }
 
 /* ===== Rekordai Heading ===== */
-.level-container h2 {
+.level-container .level h2 {
     font-family: "Lexend Deca", sans-serif;
     font-weight: 700;
     font-size: 1.8rem;
@@ -210,7 +195,7 @@
 
 /* ===== IMAGES ===== */
 .level-container img {
-    object-fit: contain; /* prevent cropping */
+    object-fit: contain;
     max-width: 100%;
     height: auto;
     border-radius: 0.5rem;
