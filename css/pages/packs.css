@@ -1,6 +1,6 @@
 .pack-list {
     display: grid;
-    grid-template-columns: minmax(380px, 450px) 1fr;
+    grid-template-columns: minmax(380px, 500px) minmax(300px, 1fr);
     grid-template-rows: 1fr;
     gap: 1.5rem;
     padding: 2rem;
@@ -134,6 +134,7 @@
     grid-column: 2;
     grid-row: 1;
     width: 100%;
+    max-width: 800px;
 }
 
 .pack-list .meta-container {
