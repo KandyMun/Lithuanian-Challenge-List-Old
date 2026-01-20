@@ -203,6 +203,17 @@
             "epilogas"
         ],
         "colour": "url('https://ltclimages.s-ul.eu/uzs13bVN')"
+    },
+    {
+        "name": "memory",
+        "levels": [
+            "sightless",
+            "klaipedos_bandeles",
+            "lidl",
+            "mcttn",
+            "reddit_landscape"
+        ],
+        "colour": "url('https://ltclimages.s-ul.eu/4gu9a0gj')"
     }
     
     
