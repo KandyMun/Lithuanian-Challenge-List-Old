@@ -11,193 +11,181 @@ export default {
         Spinner,
         LevelAuthors,
     },
-
     template: `
         <main v-if="loading">
-            <Spinner />
+            <Spinner></Spinner>
         </main>
-
         <main v-else class="pack-list">
-            <div class="pack-boxes-container">
-                <div
-                    v-for="(pack, pIndex) in packs"
-                    :key="pack.name"
-                    class="pack-box"
-                    :style="{ background: pack.colour }"
-                >
-                    <h3 class="pack-header">{{ pack.name }}</h3>
-
-                    <div class="pack-levels">
-                        <button
-                            v-for="(level, lIndex) in packLevels[pack.name]"
-                            :key="lIndex"
-                            class="pack-level-btn"
-                            :class="{
-                                active:
-                                    selectedPackIndex === pIndex &&
-                                    selectedLevelIndex === lIndex,
-                                error: !level[0]
-                            }"
-                            @click="selectLevel(pIndex, lIndex)"
-                        >
-                            {{ level[0]?.level.name || \`Error (\${level[1]}.json)\` }}
-                        </button>
-                    </div>
+            <div class="packs-nav">
+                <div>
+                    <button @click="switchLevels(i)" v-for="(pack, i) in packs" :style="{background: pack.colour}" class="type-label-lg">
+                        <p>{{pack.name}}</p>
+                    </button>
                 </div>
             </div>
-
+            <div class="list-container">
+                <table class="list" v-if="selectedPackLevels">
+                    <tr v-for="(level, i) in selectedPackLevels">
+                        <td class="rank">
+                            <p class="type-label-lg">#{{ i + 1 }}</p>
+                        </td>
+                        <td class="level" :class="{ 'active': selectedLevel == i, 'error': !level[0] }">
+                            <button :style= "[selectedLevel == i ? {background: white}:{}]" @click="selectedLevel = i">
+                                <span class="type-label-lg">{{ level[0]?.level.name || \`Error (\${level[1]}.json)\` }}</span>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
             <div class="level-container">
-                <div
-                    class="level"
-                    v-if="selectedLevel"
-                >
-                    <h1>{{ selectedLevel.level.name }}</h1>
-
-                    <LevelAuthors
-                        :author="selectedLevel.level.author"
-                        :creators="selectedLevel.level.creators"
-                        :verifier="selectedLevel.level.verifier"
-                    />
-
-                    <div style="display:flex; gap:0.5rem;">
-                        <div
-                            v-for="pack in selectedLevel.level.packs"
-                            class="tag"
-                            :style="{ background: pack.colour, color: getFontColour(pack.colour) }"
-                        >
-                            {{ pack.name }}
+                <div class="level" v-if="selectedPackLevels[selectedLevel][0]">
+                    <h1>{{ selectedPackLevels[selectedLevel][0].level.name }}</h1>
+                    <LevelAuthors :author="selectedPackLevels[selectedLevel][0].level.author" :creators="selectedPackLevels[selectedLevel][0].level.creators" :verifier="selectedPackLevels[selectedLevel][0].level.verifier"></LevelAuthors>
+                    <div style="display:flex">
+                        <div v-for="pack in selectedPackLevels[selectedLevel][0].level.packs" class="tag" :style="{background:pack.colour, color:getFontColour(pack.colour)}">
+                        {{pack.name}}
                         </div>
                     </div>
-
-                    <div v-if="selectedLevel.level.showcase" class="tabs">
-                        <button
-                            class="tab"
-                            :class="{ selected: !toggledShowcase }"
-                            @click="toggledShowcase = false"
-                        >
-                            Verification
+                    <div v-if="selectedPackLevels[selectedLevel][0].level.showcase" class="tabs">
+                        <button class="tab type-label-lg" :class="{selected: !toggledShowcase}" @click="toggledShowcase = false">
+                            <span class="type-label-lg">Verification</span>
                         </button>
-                        <button
-                            class="tab"
-                            :class="{ selected: toggledShowcase }"
-                            @click="toggledShowcase = true"
-                        >
-                            Showcase
+                        <button class="tab" :class="{selected: toggledShowcase}" @click="toggledShowcase = true">
+                            <span class="type-label-lg">Showcase</span>
                         </button>
                     </div>
-
                     <iframe class="video" :src="video" frameborder="0"></iframe>
-
                     <ul class="stats">
                         <li>
                             <div class="type-title-sm">Lygio ID</div>
-                            <p>{{ selectedLevel.level.id }}</p>
+                            <p>{{ selectedPackLevels[selectedLevel][0].level.id }}</p>
                         </li>
                     </ul>
-
                     <h2>Rekordai</h2>
                     <table class="records">
-                        <tr
-                            v-for="record in selectedLevel.records"
-                            class="record"
-                        >
-                            <td class="enjoyment"><p>100%</p></td>
+                        <tr v-for="record in selectedPackLevels[selectedLevel][0].records" class="record">
+                            <td class="enjoyment">
+                                <p>100%</p>
+                            </td>
                             <td class="user">
-                                <a :href="record.link" target="_blank">
-                                    {{ record.user }}
-                                </a>
+                                <a :href="record.link" target="_blank" class="type-label-lg">{{ record.user }}</a>
                             </td>
                             <td class="mobile">
                                 <img
-                                    v-if="record.mobile"
-                                    :src="\`/assets/phone-landscape\${store?.dark ? '-dark' : ''}.svg\`"
-                                />
+    v-if="record.mobile"
+    :src="phoneIconSrc"
+    alt="Mobile"
+/>s
                             </td>
                         </tr>
                     </table>
                 </div>
-
-                <div
-                    v-else
-                    class="level"
-                    style="height:100%; justify-content:center; align-items:center;"
-                >
+                <div v-else class="level" style="height: 100%; justify-content: center; align-items: center;">
                     <p>(ノಠ益ಠ)ノ彡┻━┻</p>
                 </div>
             </div>
-
             <div class="meta-container">
                 <div class="meta">
-                    <div class="errors" v-if="errors.length">
-                        <p
-                            class="error"
-                            v-for="error in errors"
-                        >
-                            {{ error }}
-                        </p>
+                    <div class="errors" v-show="errors.length > 0">
+                        <p class="error" v-for="error of errors">{{ error }}</p>
                     </div>
-
                     <h3>Apie pakelius</h3>
-                    <p>...</p>
+                    <p>
+                        Pakelį sudaro 3-5 panašios tematikos lygiai. Vieno pakelio lygiai neprivalo būti sukurti to pačio kūrėjo - galima daryti neoficialius priedus į kokią nors challenge seriją arba net sukurti naują seriją iš kokio vieno lygio list'e jei labai patinka jo tema. Temos panašumas gali būti su gamemode, stiliumi, gameplay, arba kitokiais aspektais (pvz. pavadinimais arba kad challenge'ai yra sukurti kelių žmonių pagalba). Maximum vietų skirtumo tarp lygių nėra. 
+                    </p>
+                    <h3>Kaip gauti pakelius?</h3>
+                    <p>
+                        Norint gauti pakelį, pereikite visus pakelyje esančius lygius ir į #⁠pakelių-prašymas parašykit kokį pakelį perėjote. Jei lygis yra legacy ir įveikėt jį po jo iškritimo iš list'o, turėsit būtinai atsiųst įveikimo video į anksčiau minėtą kanalą.
+                    </p>
+                    <p> Pakelių funkciją sukurė KrisGra. </p>
                 </div>
             </div>
         </main>
     `,
-
     data: () => ({
         store,
         packs: [],
-        packLevels: {},
-        selectedPackIndex: 0,
-        selectedLevelIndex: 0,
         errors: [],
+        selected: 0,
+        selectedLevel: 0,
+        selectedPackLevels: [],
         loading: true,
+        loadingPack: true,
         toggledShowcase: false,
     }),
-
     computed: {
-        selectedPack() {
-            return this.packs[this.selectedPackIndex];
-        },
-        selectedLevel() {
-            return this.packLevels[this.selectedPack?.name]?.[
-                this.selectedLevelIndex
-            ]?.[0];
+        pack() {
+            return this.packs[this.selected];
         },
         video() {
-            if (!this.selectedLevel?.level.showcase) {
-                return embed(this.selectedLevel.level.verification);
+            if (
+                !this.selectedPackLevels[this.selectedLevel][0].level.showcase
+            ) {
+                return embed(
+                    this.selectedPackLevels[this.selectedLevel][0].level
+                        .verification
+                );
             }
 
             return embed(
                 this.toggledShowcase
-                    ? this.selectedLevel.level.showcase
-                    : this.selectedLevel.level.verification
+                    ? this.selectedPackLevels[this.selectedLevel][0].level
+                          .showcase
+                    : this.selectedPackLevels[this.selectedLevel][0].level
+                          .verification
             );
         },
     },
-
     async mounted() {
         this.packs = await fetchPacks();
+        this.selectedPackLevels = await fetchPackLevels(
+            this.packs[this.selected].name
+        );
 
-        for (const pack of this.packs) {
-            this.packLevels[pack.name] = await fetchPackLevels(pack.name);
-
+        // Error handling
+        if (!this.packs) {
+            this.errors = [
+                "Nepavyko pakrauti sąrašo. Pabandykite po kelių minučių arba praneškite sąrašo moderatoriams.",
+            ];
+        } else {
             this.errors.push(
-                ...this.packLevels[pack.name]
+                ...this.selectedPackLevels
                     .filter(([_, err]) => err)
-                    .map(([_, err]) => `Nepavyko pakrauti lygio. (${err}.json)`)
+                    .map(([_, err]) => {
+                        return `Nepavyko pakrauti lygio. (${err}.json)`;
+                    })
             );
         }
 
+        // Hide loading spinner
         this.loading = false;
+        this.loadingPack = false;
     },
-
     methods: {
-        selectLevel(packIndex, levelIndex) {
-            this.selectedPackIndex = packIndex;
-            this.selectedLevelIndex = levelIndex;
-            this.toggledShowcase = false;
+        async switchLevels(i) {
+            this.loadingPack = true;
+
+            this.selected = i;
+            this.selectedLevel = 0;
+            this.selectedPackLevels = await fetchPackLevels(
+                this.packs[this.selected].name
+            );
+            // Error handling
+            this.errors.length = 0;
+            if (!this.packs) {
+                this.errors = [
+                    "Nepavyko pakrauti sąrašo. Pabandykite po kelių minučių arba praneškite sąrašo moderatoriams.",
+                ];
+            } else {
+                this.errors.push(
+                    ...this.selectedPackLevels
+                        .filter(([_, err]) => err)
+                        .map(([_, err]) => {
+                            return `Nepavyko pakrauti lygio. (${err}.json)`;
+                        })
+                );
+            }
+            this.loadingPack = false;
         },
         score,
         embed,

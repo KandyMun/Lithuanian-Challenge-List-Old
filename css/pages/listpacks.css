@@ -1,17 +1,60 @@
-/* ===== GRID LAYOUT ===== */
+/* ===== MAIN LAYOUT ===== */
 
 .pack-list {
     display: grid;
     grid-template-columns: 2fr 4fr 2fr;
     gap: 2rem;
+
     font-family: "Lexend Deca", sans-serif;
 }
 
-/* ===== PACK LEVEL BUTTONS (RESTORE OLD LOOK) ===== */
+/* ===== PACK GRID ===== */
+
+.pack-boxes-container {
+    margin-top: 70px;
+    padding: 2rem 1rem;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+
+    align-content: start;
+}
+
+/* ===== PACK BOX ===== */
+
+.pack-box {
+    border-radius: 1rem;
+    padding: 1rem;
+
+    color: white;
+    text-shadow: 2px 2px 2px black;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* ===== PACK TITLE ===== */
+
+.pack-header {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== LEVEL LIST ===== */
+
+.pack-levels {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* ===== LEVEL BUTTON (RESTORED STYLE) ===== */
 
 .pack-level-btn {
     background-color: var(--color-background);
     color: white;
+
     border: none;
     border-radius: 3rem;
 
@@ -20,8 +63,8 @@
 
     word-break: normal;
     overflow-wrap: anywhere;
-    cursor: pointer;
 
+    cursor: pointer;
     background-size: 100% 100% !important;
 }
 
@@ -44,7 +87,7 @@
 /* ===== LEVEL PANEL FIXES ===== */
 
 .pack-list .level-container {
-    min-width: 0;
+    min-width: 0; /* CRITICAL for grid */
     display: flex;
     justify-content: center;
 }
@@ -52,6 +95,7 @@
 .pack-list .level-container .level {
     width: 100%;
     max-width: 48rem;
+
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
