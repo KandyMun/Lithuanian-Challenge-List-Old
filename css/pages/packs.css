@@ -1,10 +1,16 @@
 .pack-list {
     display: grid;
-    grid-template-columns: minmax(350px, 1fr) 1fr; /* left = packs (left-aligned), right = level info (centered) */
+    grid-template-columns: minmax(350px, 1fr) 2fr minmax(300px, 1fr);
+    grid-template-rows: auto 1fr;
     gap: 1.5rem;
     padding: 2rem;
     height: calc(100vh - 5rem); /* minus top bar height */
     font-family: "Lexend Deca", sans-serif;
+}
+
+.pack-list .page-title {
+    grid-column: 1 / -1;
+    margin: 0;
 }
 
 /* === Left: Packs Grid === */
@@ -14,6 +20,8 @@
     gap: 1rem;
     overflow-y: auto;
     padding-right: 0.5rem;
+    grid-column: 1;
+    grid-row: 2;
 }
 
 /* Pack Card */
@@ -63,7 +71,7 @@
 }
 
 /* === Right: Level Info Panel === */
-.level-container {
+.pack-list .level-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -71,6 +79,15 @@
     border-radius: 1rem;
     background-color: var(--color-background-hover);
     overflow-y: auto;
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.pack-list .meta-container {
+    grid-column: 3;
+    grid-row: 2;
+    overflow-y: auto;
+    padding-right: 0;
 }
 
 .level-container h1 {
