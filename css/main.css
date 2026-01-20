@@ -8,9 +8,56 @@
     --color-on-primary: white;
     --color-error: #de0000;
     --color-on-error: white;
+}
+
+/* --- Global Resets --- */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: "Lexend Deca", sans-serif;
     overflow-x: hidden;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Header / Top Nav --- */
+header {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 100;
+}
+
+header .nav {
+    flex: 1;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+header .MOTD {
+    position: absolute;
+    top: 70px;
+    width: 100%;
+    display: flex;
+    animation: marquee 20s linear infinite, color-change 5s linear infinite;
+    text-shadow: 2px 3px 3px rgba(0,0,0,0.6);
+    overflow-x: hidden;
+    color: yellow;
+    font-family: "Lexend Deca", sans-serif;
+}
+
+/* --- Keyframes --- */
 @keyframes marquee { 
     0% { transform: translateX(100%); } 
     100% { transform: translateX(-100%); } 
@@ -21,8 +68,38 @@
     83.5% { color: yellow; }
 }
 
-main.dark,
-header.dark {
+/* --- Main Layout --- */
+main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: minmax(16rem, 1fr) minmax(16rem, 2fr) minmax(16rem, 1fr);
+    column-gap: 2rem;
+    margin-top: 70px; /* ensures main content is below header */
+}
+
+main > div {
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+/* --- Spinner Centering --- */
+.spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: span 3;
+}
+
+/* --- Form Elements --- */
+input[type="checkbox"] {
+    height: 1.25rem;
+    width: 1.25rem;
+    cursor: pointer;
+    margin: 0;
+}
+
+/* --- Dark Mode Override --- */
+main.dark, header.dark {
     color-scheme: dark;
     --color-background: #1c1b1f;
     --color-on-background: white;
@@ -34,124 +111,3 @@ header.dark {
     --color-error: #de0000;
     --color-on-error: white;
 }
-
-html, body {
-    height: 100%;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-}
-
-/* ===== HEADER ===== */
-header {
-    height: 5.5rem; /* taller header */
-    min-height: 5.5rem;
-    display: grid;
-    grid-template-columns: minmax(16rem, 1fr) auto minmax(16em, 1fr); /* middle column auto = nav expands */
-    align-items: center;
-    padding-inline: 2rem;
-    background-color: var(--color-primary);
-    color: var(--color-on-primary);
-}
-
-header .logo {
-    justify-self: end;
-    align-self: center;
-    display: flex;
-    align-items: flex-end;
-    gap: 1rem;
-}
-
-header .MOTD {
-    position: absolute;
-    top: -58px;
-    margin-top: 60px;
-    width: 100%;
-    display: flex;
-    animation: marquee 20s linear infinite, color-change 5s linear infinite;
-    text-shadow: 2px 3px 3px rgba(0,0,0,0.6);
-    overflow-x: hidden;
-    font-family: "Lexend Deca", sans-serif;
-    color: yellow;
-}
-
-header .nav {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    justify-content: flex-start;
-    flex-grow: 1;
-    min-width: 0; /* allows shrinking inside grid */
-    overflow-x: auto;
-}
-
-header .nav button {
-    flex: 0 0 auto;
-    min-width: 140px;
-    height: 50px;
-    padding: 0 1.5rem;
-    border-radius: 0.75rem;
-    border: none;
-    font-family: "Lexend Deca", sans-serif;
-    font-size: 1.1rem;
-    background-color: rgba(0,0,0,0.25);
-    color: white;
-    white-space: nowrap;
-    text-align: center;
-    transition: background-color 0.15s ease, transform 0.1s ease;
-}
-
-header .nav button:hover {
-    background-color: rgba(0,0,0,0.4);
-    transform: translateY(-1px);
-}
-
-header .nav button.active {
-    background-color: rgba(255,255,255,0.8);
-    color: black;
-}
-
-/* ===== MAIN CONTENT ===== */
-main {
-    flex: 1;
-    display: grid;
-    grid-template-rows: minmax(0, 1fr);
-    column-gap: 2rem;
-    padding-top: 5.5rem; /* push content below header */
-}
-
-main > div {
-    overflow-y: auto;
-}
-
-/* ===== SPINNER ===== */
-.spinner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    grid-column: span 3;
-}
-
-/* ===== CHECKBOX ===== */
-input[type="checkbox"] {
-    height: 1.25rem;
-    width: 1.25rem;
-    cursor: pointer;
-    margin: 0;
-}
-
-/* ===== GENERAL PAGE LAYOUT ===== */
-.page-list, .pack-list {
-    font-family: "Lexend Deca", sans-serif;
-    min-height: 100vh;
-}
-
-/* Optional: keep packs starting a bit lower */
-.pack-list .packs-nav {
-    margin-top: 1rem;
-}
-
-/* Keep all other components inside PackList.css or page-specific CSS */
