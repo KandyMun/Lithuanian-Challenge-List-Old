@@ -32,7 +32,8 @@
             "absolut",
             "degtine",
             "jack_daniels",
-            "jagermeister"
+            "jagermeister",
+            "captain_morgan"
         ],
         "colour": "url('https://ltclimages.s-ul.eu/W4XKj8A9')"
     },
@@ -148,7 +149,8 @@
             "undisclosed",
             "v_o_i_d",
             "ufo_challenge",
-            "blossom"
+            "blossom",
+            "burnt_nachos_is_yay"
         ],
         "colour": "url('https://ltclimages.s-ul.eu/0UJO0Us5')"
     },
@@ -190,7 +192,19 @@
             "fitler_of_hcl"
         ],
         "colour": "url('https://ltclimages.s-ul.eu/NZAT2trV')"
+    },
+    {
+        "name": "nine circles",
+        "levels": [
+            "i_oooh",
+            "golden_symphony",
+            "tanzanitas",
+            "dart_mastery",
+            "epilogas"
+        ],
+        "colour": "url('https://ltclimages.s-ul.eu/uzs13bVN')"
     }
+    
     
     
 ]
