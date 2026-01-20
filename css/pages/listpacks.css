@@ -2,7 +2,7 @@
 
 .pack-list {
     display: grid;
-    grid-template-columns: minmax(380px, 450px) 1fr minmax(250px, 300px);
+    grid-template-columns: minmax(380px, 450px) 1fr;
     grid-template-rows: auto 1fr;
     gap: 1.5rem;
     padding: 2rem;
@@ -104,7 +104,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     padding: 2rem;
     border-radius: 1rem;
     background-color: var(--color-background-hover);
@@ -112,24 +112,17 @@
     grid-column: 2;
     grid-row: 2;
     width: 100%;
-    max-width: 800px;
-    justify-self: center;
 }
 
 .pack-list .meta-container {
-    grid-column: 3;
-    grid-row: 2;
-    overflow-y: auto;
-    padding: 2rem 0;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    display: none;
 }
 
 .level-container h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: bold;
     text-align: center;
+    margin-bottom: 1rem;
 }
 
 .level-container .level-authors {
@@ -147,11 +140,31 @@
 }
 
 .level-container .video {
-    width: 90%;
-    max-width: 640px;
+    width: 95%;
+    max-width: 900px;
     aspect-ratio: 16/9;
     border-radius: 0.5rem;
-    margin: 1rem 0;
+    margin: 1.5rem 0;
+}
+
+.level-container .stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1.5rem 0;
+    font-size: 1.1rem;
+}
+
+.level-container .records {
+    width: 95%;
+    max-width: 900px;
+    border-collapse: collapse;
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.level-container .records td {
+    padding: 0.6rem 0.8rem;
 }
 
 .level-container .stats {
@@ -166,8 +179,4 @@
     max-width: 640px;
     border-collapse: collapse;
     text-align: center;
-}
-
-.level-container .records td {
-    padding: 0.4rem 0.6rem;
 }
