@@ -37,7 +37,6 @@
     gap: 0.5rem;
     min-height: auto;
     box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-    overflow: hidden;
 }
 
 .pack-card::before {
@@ -47,9 +46,9 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 100%);
+    background: linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 100%);
     pointer-events: none;
-    z-index: 0;
+    border-radius: 1rem;
 }
 
 .pack-card .pack-name {
@@ -58,7 +57,7 @@
     color: white;
     text-shadow: 2px 2px 5px black;
     position: relative;
-    z-index: 2;
+    z-index: 1;
 }
 
 .pack-card .levels {
@@ -66,14 +65,14 @@
     flex-direction: column;
     gap: 0.3rem;
     position: relative;
-    z-index: 2;
+    z-index: 1;
 }
 
 .pack-card .levels button {
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0,0,0,0.7);
     border: none;
     border-radius: 0.4rem;
-    padding: 0.4rem 0.6rem;
+    padding: 0.5rem 0.8rem;
     color: white;
     cursor: pointer;
     text-align: left;
@@ -83,7 +82,7 @@
     font-family: "Lexend Deca", sans-serif;
     letter-spacing: 0.3px;
     position: relative;
-    z-index: 2;
+    z-index: 1;
 }
 
 .pack-card .levels button:hover {
@@ -92,7 +91,7 @@
 }
 
 .pack-card .levels button.active {
-    background-color: rgba(255,255,255,0.85);
+    background-color: rgba(255,255,255,0.9);
     color: black;
     font-weight: 600;
     box-shadow: inset 0 0 8px rgba(0,0,0,0.2);
