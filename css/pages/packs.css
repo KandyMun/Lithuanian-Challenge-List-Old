@@ -49,6 +49,24 @@
     bottom: 0;
     background: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 100%);
     pointer-events: none;
+    z-index: 0;
+}
+
+.pack-card .pack-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+    position: relative;
+    z-index: 2;
+}
+
+.pack-card .levels {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    position: relative;
+    z-index: 2;
 }
 
 .pack-card .levels button {
@@ -60,8 +78,12 @@
     cursor: pointer;
     text-align: left;
     transition: all 0.2s ease;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 500;
+    font-family: "Lexend Deca", sans-serif;
+    letter-spacing: 0.3px;
+    position: relative;
+    z-index: 2;
 }
 
 .pack-card .levels button:hover {
