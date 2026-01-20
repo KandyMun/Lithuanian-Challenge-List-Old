@@ -140,7 +140,7 @@ export default {
               patvirtinimas gali būti ne lietuvio.
                     </p>
                     <p>
-                        Challenge'ai privalo būti pastatyti ir patvirtinami <b>be CBF</b>.
+                        Challenge'ai gali būti patvirtinami <b>su CBF</b>, tik jei bus naudojama oficiali žaidimo versija.
                     </p>
                     <p>
                         Naudok bendrą išprusimą ir neieškok spragų taisyklėse.
