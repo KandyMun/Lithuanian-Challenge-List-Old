@@ -1,75 +1,24 @@
-/* PACK GRID */
+.pack-list {
+    display: grid;
+    grid-template-columns: 2fr 3fr 2fr;
+    gap: 2rem;
+}
 
 .pack-boxes-container {
     margin-top: 70px;
     padding: 2rem 1rem;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.5rem;
+    align-content: start;
 }
 
-/* PACK BOX */
-
-.pack-box {
-    border-radius: 1rem;
-    padding: 1rem;
-    color: white;
-    text-shadow: 2px 2px 2px black;
+.pack-list .level-container {
     display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+    justify-content: center;
 }
 
-/* PACK TITLE */
-
-.pack-header {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
+.pack-list .level-container .level {
+    width: 100%;
+    max-width: 48rem;
 }
-
-/* LEVEL LIST */
-
-.pack-levels {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-/* LEVEL BUTTON */
-
-.pack-level-btn {
-    background-color: var(--color-background);
-    color: white;
-    border: none;
-    border-radius: 3rem;
-    padding: 0.75rem 1rem;
-    text-align: start;
-    cursor: pointer;
-    word-break: normal;
-    overflow-wrap: anywhere;
-}
-
-.pack-level-btn:hover {
-    background-color: var(--color-background-hover);
-    color: var(--color-on-background-hover);
-}
-
-.pack-level-btn.active {
-    background-color: rgba(255,255,255,.5);
-    color: black;
-}
-
-.pack-level-btn.error {
-    color: var(--color-error);
-    cursor: not-allowed;
-    text-decoration: line-through;
-}
-
-/* HIGHLIGHT ACTIVE PACK */
-
-.pack-box:has(.pack-level-btn.active) {
-    outline: 3px solid rgba(255,255,255,0.6);
-}
-
-/* KEEP YOUR EXISTING LEVEL / META CSS AS-IS */
