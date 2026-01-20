@@ -1,0 +1,114 @@
+.pack-list {
+    display: grid;
+    grid-template-columns: 2fr 3fr; /* left = packs, right = level info */
+    gap: 1.5rem;
+    padding: 2rem;
+    height: calc(100vh - 5rem); /* minus top bar height */
+    font-family: "Lexend Deca", sans-serif;
+}
+
+/* === Left: Packs Grid === */
+.packs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columns */
+    gap: 1rem;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+/* Pack Card */
+.pack-card {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    border-radius: 1rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-height: 180px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+.pack-card .pack-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+}
+
+.pack-card .levels {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.pack-card .levels button {
+    background-color: rgba(0,0,0,0.6);
+    border: none;
+    border-radius: 0.4rem;
+    padding: 0.4rem 0.6rem;
+    color: white;
+    cursor: pointer;
+    text-align: left;
+}
+
+.pack-card .levels button:hover {
+    background-color: rgba(255,255,255,0.3);
+}
+
+.pack-card .levels button.active {
+    background-color: rgba(255,255,255,0.7);
+    color: black;
+}
+
+/* === Right: Level Info Panel === */
+.level-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: var(--color-background-hover);
+    overflow-y: auto;
+}
+
+.level-container h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.level-container .level-authors {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.level-container .video {
+    width: 90%;
+    max-width: 640px;
+    aspect-ratio: 16/9;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+}
+
+.level-container .stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+.level-container .records {
+    width: 100%;
+    max-width: 640px;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.level-container .records td {
+    padding: 0.4rem 0.6rem;
+}
