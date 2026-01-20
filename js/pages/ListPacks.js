@@ -30,7 +30,7 @@ export default {
                             <p class="type-label-lg">#{{ i + 1 }}</p>
                         </td>
                         <td class="level" :class="{ 'active': selectedLevel == i, 'error': !level[0] }">
-                            <button :style= "[selectedLevel == i ? {background: white}:{}]" @click="selectedLevel = i">
+                            <button :style="[selectedLevel == i ? {background: 'white'} : {}]" @click="selectedLevel = i">
                                 <span class="type-label-lg">{{ level[0]?.level.name || \`Error (\${level[1]}.json)\` }}</span>
                             </button>
                         </td>
@@ -41,9 +41,9 @@ export default {
                 <div class="level" v-if="selectedPackLevels[selectedLevel][0]">
                     <h1>{{ selectedPackLevels[selectedLevel][0].level.name }}</h1>
                     <LevelAuthors :author="selectedPackLevels[selectedLevel][0].level.author" :creators="selectedPackLevels[selectedLevel][0].level.creators" :verifier="selectedPackLevels[selectedLevel][0].level.verifier"></LevelAuthors>
-                    <div style="display:flex">
+                    <div class="packs">
                         <div v-for="pack in selectedPackLevels[selectedLevel][0].level.packs" class="tag" :style="{background:pack.colour, color:getFontColour(pack.colour)}">
-                        {{pack.name}}
+                            {{pack.name}}
                         </div>
                     </div>
                     <div v-if="selectedPackLevels[selectedLevel][0].level.showcase" class="tabs">
@@ -85,14 +85,6 @@ export default {
                     <div class="errors" v-show="errors.length > 0">
                         <p class="error" v-for="error of errors">{{ error }}</p>
                     </div>
-                    <h3>Apie pakelius</h3>
-                    <p>
-                        Pakelį sudaro 3-5 panašios tematikos lygiai. Vieno pakelio lygiai neprivalo būti sukurti to pačio kūrėjo - galima daryti neoficialius priedus į kokią nors challenge seriją arba net sukurti naują seriją iš kokio vieno lygio list'e jei labai patinka jo tema. Temos panašumas gali būti su gamemode, stiliumi, gameplay, arba kitokiais aspektais (pvz. pavadinimais arba kad challenge'ai yra sukurti kelių žmonių pagalba). Maximum vietų skirtumo tarp lygių nėra. 
-                    </p>
-                    <h3>Kaip gauti pakelius?</h3>
-                    <p>
-                        Norint gauti pakelį, pereikite visus pakelyje esančius lygius ir į #⁠pakelių-prašymas parašykit kokį pakelį perėjote. Jei lygis yra legacy ir įveikėt jį po jo iškritimo iš list'o, turėsit būtinai atsiųst įveikimo video į anksčiau minėtą kanalą.
-                    </p>
                     <p> Pakelių funkciją sukurė KrisGra. </p>
                 </div>
             </div>
@@ -114,29 +106,32 @@ export default {
             return this.packs[this.selected];
         },
         video() {
-            if (
-                !this.selectedPackLevels[this.selectedLevel][0].level.showcase
-            ) {
-                return embed(
-                    this.selectedPackLevels[this.selectedLevel][0].level
-                        .verification
-                );
+            if (!this.selectedPackLevels[this.selectedLevel][0].level.showcase) {
+                return embed(this.selectedPackLevels[this.selectedLevel][0].level.verification);
             }
-
-            return embed(
-                this.toggledShowcase
-                    ? this.selectedPackLevels[this.selectedLevel][0].level
-                          .showcase
-                    : this.selectedPackLevels[this.selectedLevel][0].level
-                          .verification
+            return embed(this.toggledShowcase
+                ? this.selectedPackLevels[this.selectedLevel][0].level.showcase
+                : this.selectedPackLevels[this.selectedLevel][0].level.verification
             );
         },
     },
     async mounted() {
+        // Inject packs.css dynamically
+        const link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href = "/css/pages/packs.css";
+        document.head.appendChild(link);
+
+        // Fetch packs
         this.packs = await fetchPacks();
-        this.selectedPackLevels = await fetchPackLevels(
-            this.packs[this.selected].name
-        );
+
+        // Inject PAKELIAI title
+        const title = document.createElement("h1");
+        title.className = "pack-title";
+        title.textContent = "PAKELIAI";
+        document.querySelector("main").prepend(title);
+
+        this.selectedPackLevels = await fetchPackLevels(this.packs[this.selected].name);
 
         // Error handling
         if (!this.packs) {
@@ -147,38 +142,28 @@ export default {
             this.errors.push(
                 ...this.selectedPackLevels
                     .filter(([_, err]) => err)
-                    .map(([_, err]) => {
-                        return `Nepavyko pakrauti lygio. (${err}.json)`;
-                    })
+                    .map(([_, err]) => `Nepavyko pakrauti lygio. (${err}.json)`)
             );
         }
 
-        // Hide loading spinner
         this.loading = false;
         this.loadingPack = false;
     },
     methods: {
         async switchLevels(i) {
             this.loadingPack = true;
-
             this.selected = i;
             this.selectedLevel = 0;
-            this.selectedPackLevels = await fetchPackLevels(
-                this.packs[this.selected].name
-            );
-            // Error handling
+            this.selectedPackLevels = await fetchPackLevels(this.packs[this.selected].name);
+
             this.errors.length = 0;
             if (!this.packs) {
-                this.errors = [
-                    "Nepavyko pakrauti sąrašo. Pabandykite po kelių minučių arba praneškite sąrašo moderatoriams.",
-                ];
+                this.errors = ["Nepavyko pakrauti sąrašo. Pabandykite po kelių minučių arba praneškite sąrašo moderatoriams."];
             } else {
                 this.errors.push(
                     ...this.selectedPackLevels
                         .filter(([_, err]) => err)
-                        .map(([_, err]) => {
-                            return `Nepavyko pakrauti lygio. (${err}.json)`;
-                        })
+                        .map(([_, err]) => `Nepavyko pakrauti lygio. (${err}.json)`)
                 );
             }
             this.loadingPack = false;
