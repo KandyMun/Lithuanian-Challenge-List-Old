@@ -68,7 +68,6 @@
   {
         "name": "rng",
         "levels": [
-            "melyninis_miau",
             "have_fun",
             "kandyman_chamber",
             "enjoy_the_experience"
@@ -223,7 +222,56 @@
             "mosquito_at_3am"
         ],
         "colour": "url('https://ltclimages.s-ul.eu/1VE7JTX2')"
+    },
+    {
+        "name": "sutrikimai",
+        "levels": [
+            "blindness",
+            "iron_deficiency",
+            "dalbajobas"
+        ],
+        "colour": "url('https://ltclimages.s-ul.eu/Ve9XtQaL')"
+    },
+    {
+        "name": "pabaiga",
+        "levels": [
+            "viso_gero",
+            "365",
+            "epilogas"
+        ],
+        "colour": "url('https://ltclimages.s-ul.eu/mwdXURjp')"
+    },
+    {
+        "name": "pienas",
+        "levels": [
+            "vilkyskiu_pienine",
+            "actimel",
+            "kauno_pienas",
+            "melyninis_miau"
+        ],
+        "colour": "url('https://ltclimages.s-ul.eu/QC4hKcsl')"
+    },
+    {
+        "name": "sveikuoliu pack",
+        "levels": [
+            "mandarinas_34",
+            "banana_juice_strat",
+            "lemon"
+        ],
+        "colour": "url('https://ltclimages.s-ul.eu/dOmoj2DV')"
+    },
+    {
+        "name": "meme",
+        "levels": [
+            "imone",
+            "holy_moly",
+            "those_who_patapim_x",
+            "camo_lead_huzz",
+            "harmogus"
+        ],
+        "colour": "url('https://ltclimages.s-ul.eu/P3EcJjP8')"
     }
+    
     
     
     
